@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D63B2A8526DF00685C71 /* PokeApp.swift */; };
-		0066D63E2A8526DF00685C71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D63D2A8526DF00685C71 /* ContentView.swift */; };
+		0066D63E2A8526DF00685C71 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D63D2A8526DF00685C71 /* SignInView.swift */; };
 		0066D6402A8526E100685C71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0066D63F2A8526E100685C71 /* Assets.xcassets */; };
 		0066D6432A8526E100685C71 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0066D6422A8526E100685C71 /* Preview Assets.xcassets */; };
+		0066D64A2A853D8900685C71 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6492A853D8900685C71 /* K.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0066D6382A8526DF00685C71 /* Poke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Poke.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0066D63B2A8526DF00685C71 /* PokeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeApp.swift; sourceTree = "<group>"; };
-		0066D63D2A8526DF00685C71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0066D63D2A8526DF00685C71 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		0066D63F2A8526E100685C71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0066D6422A8526E100685C71 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0066D6492A853D8900685C71 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +54,10 @@
 			isa = PBXGroup;
 			children = (
 				0066D63B2A8526DF00685C71 /* PokeApp.swift */,
-				0066D63D2A8526DF00685C71 /* ContentView.swift */,
+				0066D63D2A8526DF00685C71 /* SignInView.swift */,
 				0066D63F2A8526E100685C71 /* Assets.xcassets */,
 				0066D6412A8526E100685C71 /* Preview Content */,
+				0066D6492A853D8900685C71 /* K.swift */,
 			);
 			path = Poke;
 			sourceTree = "<group>";
@@ -137,7 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0066D63E2A8526DF00685C71 /* ContentView.swift in Sources */,
+				0066D64A2A853D8900685C71 /* K.swift in Sources */,
+				0066D63E2A8526DF00685C71 /* SignInView.swift in Sources */,
 				0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
