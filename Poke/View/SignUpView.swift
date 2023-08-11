@@ -16,44 +16,46 @@ struct SignUpView: View {
             ZStack{
                     Color(K.Colors.canvasColor)
                         .edgesIgnoringSafeArea(.all)
+                ScrollView {
                     VStack{
-                        FormElements.InputFieldView(input: $viewModel.name, titleShown: "Name", warningMessage: $viewModel.nameWarning, isSecuredOn: false)
-                        
-                        FormElements.InputFieldView(input: $viewModel.userName, titleShown: "User Name", warningMessage: $viewModel.userNameWarning, isSecuredOn: false)
-                        
-                        FormElements.InputFieldView(input: $viewModel.email, titleShown: "Email", warningMessage: $viewModel.emailWarning, isSecuredOn: false)
-                        
-                        FormElements.InputFieldView(input: $viewModel.password, titleShown: "Password", warningMessage: $viewModel.passwordWarning, isSecuredOn: true)
-                        
-                        HStack {
-                            Text("Already have an account?")
-                                .fontWeight(.semibold)
+                            FormElements.InputFieldView(input: $viewModel.name, titleShown: "Name", warningMessage: $viewModel.nameWarning, isSecuredOn: false)
+                            
+                            FormElements.InputFieldView(input: $viewModel.userName, titleShown: "User Name", warningMessage: $viewModel.userNameWarning, isSecuredOn: false)
+                            
+                            FormElements.InputFieldView(input: $viewModel.email, titleShown: "Email", warningMessage: $viewModel.emailWarning, isSecuredOn: false)
+                            
+                            FormElements.InputFieldView(input: $viewModel.password, titleShown: "Password", warningMessage: $viewModel.passwordWarning, isSecuredOn: true)
+                            
+                            HStack {
+                                Text("Already have an account?")
+                                    .fontWeight(.semibold)
+                                Button {
+                                    router.popToRoot()
+                                } label: {
+                                    Text("Sign In")
+                                        .underline()
+                                        .fontWeight(.bold)
+                                }
+                                .foregroundColor(Color(UIColor.label))
+                            }
+                            .font(.system(size: 17))
+                            
                             Button {
-                                router.popToRoot()
+                                if viewModel.isFormValid(){
+                                    print("Sign up")
+                                }
                             } label: {
-                                Text("Sign In")
-                                    .underline()
-                                    .fontWeight(.bold)
+                                FormElements.FormButtonLabelView(buttonTitle: "Sign Up")
                             }
-                            .foregroundColor(Color(UIColor.label))
+                            
+                            Spacer()
                         }
-                        .font(.system(size: 17))
-                        
-                        Button {
-                            if viewModel.isFormValid(){
-                                print("Sign up")
-                            }
-                        } label: {
-                            FormElements.FormButtonLabelView(buttonTitle: "Sign Up")
-                        }
-                        
-                        Spacer()
+                        .navigationTitle("Sign Up")
+                        .navigationBarBackButtonHidden(true)
+                        .swipeActions {
+                            SignInView()
                     }
-                    .navigationTitle("Sign Up")
-                    .navigationBarBackButtonHidden(true)
-                    .swipeActions {
-                        SignInView()
-                    }
+                }
             }
     }
 }

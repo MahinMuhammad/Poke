@@ -16,36 +16,38 @@ struct SignInView: View {
             ZStack{
                 Color(K.Colors.canvasColor)
                     .edgesIgnoringSafeArea(.all)
-                VStack{
-                    FormElements.InputFieldView(input: $viewModel.email, titleShown: "Email", warningMessage: $viewModel.emailWarning, isSecuredOn: false)
-                    
-                    FormElements.InputFieldView(input: $viewModel.password, titleShown: "Password", warningMessage: $viewModel.passwordWarning, isSecuredOn: true)
-                    
-                    HStack {
-                        Text("Don't have an account?")
-                            .fontWeight(.semibold)
-                        NavigationLink(value: Destination.signUp) {
-                            Text("Sign Up")
-                                .underline()
-                                .fontWeight(.bold)
+                ScrollView {
+                    VStack{
+                        FormElements.InputFieldView(input: $viewModel.email, titleShown: "Email", warningMessage: $viewModel.emailWarning, isSecuredOn: false)
+                        
+                        FormElements.InputFieldView(input: $viewModel.password, titleShown: "Password", warningMessage: $viewModel.passwordWarning, isSecuredOn: true)
+                        
+                        HStack {
+                            Text("Don't have an account?")
+                                .fontWeight(.semibold)
+                            NavigationLink(value: Destination.signUp) {
+                                Text("Sign Up")
+                                    .underline()
+                                    .fontWeight(.bold)
+                            }
+                            .foregroundColor(Color(UIColor.label))
                         }
-                        .foregroundColor(Color(UIColor.label))
-                    }
-                    .font(.system(size: 17))
-                    
-                    Button {
-                        if viewModel.isFormValid(){
-                            print("sign in")
+                        .font(.system(size: 17))
+                        
+                        Button {
+                            if viewModel.isFormValid(){
+                                print("sign in")
+                            }
+                        } label: {
+                            FormElements.FormButtonLabelView(buttonTitle: "Sign In")
                         }
-                    } label: {
-                        FormElements.FormButtonLabelView(buttonTitle: "Sign In")
+                        
+                        Spacer()
                     }
-                    
-                    Spacer()
+                    .navigationTitle("Sign In")
+                    .navigationDestination(for: Destination.self) { destination in
+                        ViewFactory.viewForDestination(destination)
                 }
-                .navigationTitle("Sign In")
-                .navigationDestination(for: Destination.self) { destination in
-                    ViewFactory.viewForDestination(destination)
                 }
             }
     }
