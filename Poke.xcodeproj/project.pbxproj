@@ -32,6 +32,7 @@
 		0066D67D2A8688DC00685C71 /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D67C2A8688DC00685C71 /* FriendListView.swift */; };
 		0066D6802A868E9200685C71 /* FormElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D67F2A868E9200685C71 /* FormElements.swift */; };
 		0066D6822A86990B00685C71 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6812A86990B00685C71 /* DataManager.swift */; };
+		0066D6842A869C7400685C71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6832A869C7400685C71 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		0066D67C2A8688DC00685C71 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
 		0066D67F2A868E9200685C71 /* FormElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormElements.swift; sourceTree = "<group>"; };
 		0066D6812A86990B00685C71 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		0066D6832A869C7400685C71 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				0066D66E2A867FEC00685C71 /* AuthManager.swift */,
 				0066D6812A86990B00685C71 /* DataManager.swift */,
+				0066D6832A869C7400685C71 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				0066D6772A8686C400685C71 /* ChatBoxView.swift in Sources */,
 				0066D65C2A8656FB00685C71 /* Router.swift in Sources */,
 				0066D6602A86672D00685C71 /* ViewFactory.swift in Sources */,
+				0066D6842A869C7400685C71 /* User.swift in Sources */,
 				0066D6802A868E9200685C71 /* FormElements.swift in Sources */,
 				0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */,
 				0066D6792A8686D900685C71 /* SettingsView.swift in Sources */,

@@ -14,4 +14,6 @@ final class AuthManager{
     var isSignedIn: Bool{
         return Auth.auth().currentUser != nil ? true : false
     }
+    
+    
 }
