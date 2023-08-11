@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SignInView: View {
-    @State var email:String = ""
-    @State var password:String = ""
-    @State var passwordVisible = false
+    
+    @StateObject private var viewModel = SignInViewModel()
+    @EnvironmentObject var router: Router
+
     var body: some View {
-        NavigationStack{
             ZStack{
                 Color(K.Colors.canvasColor)
                     .edgesIgnoringSafeArea(.all)
@@ -23,7 +23,8 @@ struct SignInView: View {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color(K.Colors.secondaryColor))
-                                TextField("Email", text: $email)
+                                TextField("Email", text: $viewModel.email)
+                                    .tint(Color(UIColor.label))
                                     .padding(.all)
                             }
                         }
@@ -37,18 +38,20 @@ struct SignInView: View {
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color(K.Colors.secondaryColor))
                                 HStack{
-                                    if passwordVisible{
-                                        TextField("Password", text: $password)
+                                    if viewModel.passwordVisible{
+                                        TextField("Password", text: $viewModel.password)
+                                            .tint(Color(UIColor.label))
                                             .padding(.all)
                                     }else{
-                                        SecureField("Password", text: $password)
+                                        SecureField("Password", text: $viewModel.password)
+                                            .tint(Color(UIColor.label))
                                             .padding(.all)
                                     }
                                     
                                     Button {
-                                        passwordVisible.toggle()
+                                        viewModel.showPasswordPressed()
                                     } label: {
-                                        passwordVisible ? Image(systemName: "eye") : Image(systemName: "eye.slash.fill")
+                                        Image(systemName: viewModel.getEyeImage())
                                     }
                                     .foregroundColor(Color(UIColor.label))
                                     .padding(.all)
@@ -58,7 +61,17 @@ struct SignInView: View {
                         .padding(.all)
                         .frame(height: 100)
                     
-                    
+                    HStack {
+                        Text("Don't have an account?")
+                            .fontWeight(.semibold)
+                        NavigationLink(value: Destination.signUp) {
+                            Text("Sign Up")
+                                .underline()
+                                .fontWeight(.bold)
+                        }
+                        .foregroundColor(Color(UIColor.label))
+                    }
+                    .font(.system(size: 17))
                     
                     Button {
                         print("sign in")
@@ -67,7 +80,7 @@ struct SignInView: View {
                             .foregroundColor(Color(K.Colors.primaryColor))
                             .overlay{
                                 Text("Sign In")
-                                    .foregroundColor(Color(UIColor.label))
+                                    .foregroundColor(Color.white)
                                     .font(.system(size: 25))
                             }
                             .padding(.all)
@@ -77,8 +90,10 @@ struct SignInView: View {
                     Spacer()
                 }
                 .navigationTitle("Sign In")
+                .navigationDestination(for: Destination.self) { destination in
+                    ViewFactory.viewForDestination(destination)
+                }
             }
-        }
     }
 }
 
