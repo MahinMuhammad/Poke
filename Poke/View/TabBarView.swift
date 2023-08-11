@@ -12,7 +12,17 @@ struct TabBarView: View {
         TabView{
             ChatListView()
                 .tabItem {
-                    Label("", image: <#T##String#>)
+                    Image(systemName: "message")
+                }
+            
+            FriendListView()
+                .tabItem {
+                    Image(systemName: "person.2")
+                }
+            
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "slider.horizontal.3")
                 }
         }
     }
