@@ -40,7 +40,9 @@ struct SignUpView: View {
                         .font(.system(size: 17))
                         
                         Button {
-
+                            if viewModel.isFormValid(){
+                                print("Sign up")
+                            }
                         } label: {
                             FormElements.FormButtonLabelView(buttonTitle: "Sign Up")
                         }
