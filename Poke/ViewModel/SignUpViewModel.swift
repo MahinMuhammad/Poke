@@ -18,10 +18,11 @@ final class SignUpViewModel: ObservableObject{
     @Published var emailWarning:String?
     @Published var passwordWarning:String?
     
-    let dataManager = DataManager.shared
+    let userDataManager = UserDataManager.shared
+    let authManager = AuthManager.shared
     
-    func signUpPressed(){
-        print("Sign Up")
+    func signUpPressed(use router: Router){
+        authManager.signUpUser(name: name, userName: userName, email: email, password: password, use: router)
     }
     
     func isFormValid()->Bool{
@@ -38,7 +39,7 @@ final class SignUpViewModel: ObservableObject{
             flag = false
             userNameWarning = "User Name required"
         }else{
-            if !dataManager.isUserNameUnique(for: userName){
+            if !userDataManager.isUserNameUnique(for: userName){
                 flag = false
                 userNameWarning = "User Name already in use"
             }
@@ -47,7 +48,7 @@ final class SignUpViewModel: ObservableObject{
             flag = false
             emailWarning = "Email Required"
         }else{
-            if !dataManager.isEmailUnique(for: email){
+            if !userDataManager.isEmailUnique(for: email){
                 flag = false
                 emailWarning = "Email already in use"
             }

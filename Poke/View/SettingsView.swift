@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var router: Router
     var body: some View {
-        Text("SettingsView")
+        VStack{
+            Text("SettingsView")
+            Button("Sign Out"){
+                if AuthManager.shared.signOut(){
+                    router.path.removeLast(router.path.count)
+                }
+            }
+        }
     }
 }
 

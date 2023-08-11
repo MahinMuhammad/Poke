@@ -11,4 +11,5 @@ struct User{
     var name:String
     var userName:String
     var email:String
+    var friends:[String]
 }

@@ -36,7 +36,7 @@ struct SignInView: View {
                         
                         Button {
                             if viewModel.isFormValid(){
-                                print("sign in")
+                                viewModel.signInPressed(use: router)
                             }
                         } label: {
                             FormElements.FormButtonLabelView(buttonTitle: "Sign In")

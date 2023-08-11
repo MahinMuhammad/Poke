@@ -42,7 +42,7 @@ struct SignUpView: View {
                             
                             Button {
                                 if viewModel.isFormValid(){
-                                    print("Sign up")
+                                    viewModel.signUpPressed(use: router)
                                 }
                             } label: {
                                 FormElements.FormButtonLabelView(buttonTitle: "Sign Up")

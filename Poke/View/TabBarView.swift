@@ -25,6 +25,7 @@ struct TabBarView: View {
                     Image(systemName: "slider.horizontal.3")
                 }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

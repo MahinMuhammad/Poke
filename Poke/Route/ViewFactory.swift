@@ -16,6 +16,8 @@ class ViewFactory {
             SignInView()
         case .signUp:
             SignUpView()
+        case .tabBar:
+            TabBarView()
         }
     }
 }

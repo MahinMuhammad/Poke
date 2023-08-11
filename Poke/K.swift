@@ -14,4 +14,11 @@ struct K{
         static let secondaryColor = "SecondaryColor"
         static let primaryColor = "PrimaryColor"
     }
+    
+    struct FStore{
+        static let userCollectionName = "users"
+        static let nameField = "name"
+        static let userNameField = "userName"
+        static let emailField = "email"
+    }
 }

@@ -10,4 +10,5 @@ import Foundation
 enum Destination{
     case signIn
     case signUp
+    case tabBar
 }
