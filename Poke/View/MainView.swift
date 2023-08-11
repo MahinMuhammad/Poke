@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var isSignedIn = false
+    @StateObject var viewModel = MainViewModel()
     var body: some View {
-        if isSignedIn{
+        if viewModel.isSignedIn(){
             
         }else{
             SignInView()
