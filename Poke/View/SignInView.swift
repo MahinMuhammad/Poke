@@ -17,49 +17,9 @@ struct SignInView: View {
                 Color(K.Colors.canvasColor)
                     .edgesIgnoringSafeArea(.all)
                 VStack{
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color(K.Colors.tileColor))
-                        .overlay{
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(K.Colors.secondaryColor))
-                                TextField("Email", text: $viewModel.email)
-                                    .tint(Color(UIColor.label))
-                                    .padding(.all)
-                            }
-                        }
-                        .padding(.all)
-                        .frame(height: 100)
+                    FormElements.InputFieldView(input: $viewModel.email, titleShown: "Email", warningMessage: $viewModel.emailWarning, isSecuredOn: false)
                     
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color(K.Colors.tileColor))
-                        .overlay{
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(K.Colors.secondaryColor))
-                                HStack{
-                                    if viewModel.passwordVisible{
-                                        TextField("Password", text: $viewModel.password)
-                                            .tint(Color(UIColor.label))
-                                            .padding(.all)
-                                    }else{
-                                        SecureField("Password", text: $viewModel.password)
-                                            .tint(Color(UIColor.label))
-                                            .padding(.all)
-                                    }
-                                    
-                                    Button {
-                                        viewModel.showPasswordPressed()
-                                    } label: {
-                                        Image(systemName: viewModel.getEyeImage())
-                                    }
-                                    .foregroundColor(Color(UIColor.label))
-                                    .padding(.all)
-                                }
-                            }
-                        }
-                        .padding(.all)
-                        .frame(height: 100)
+                    FormElements.InputFieldView(input: $viewModel.password, titleShown: "Password", warningMessage: $viewModel.passwordWarning, isSecuredOn: true)
                     
                     HStack {
                         Text("Don't have an account?")
@@ -74,17 +34,11 @@ struct SignInView: View {
                     .font(.system(size: 17))
                     
                     Button {
-                        print("sign in")
+                        if viewModel.isFormValid(){
+                            print("sign in")
+                        }
                     } label: {
-                        RoundedRectangle(cornerRadius: 26)
-                            .foregroundColor(Color(K.Colors.primaryColor))
-                            .overlay{
-                                Text("Sign In")
-                                    .foregroundColor(Color.white)
-                                    .font(.system(size: 25))
-                            }
-                            .padding(.all)
-                            .frame(height: 90)
+                        FormElements.FormButtonLabelView(buttonTitle: "Sign In")
                     }
                     
                     Spacer()

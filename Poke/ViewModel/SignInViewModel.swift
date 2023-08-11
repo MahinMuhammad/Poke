@@ -10,17 +10,26 @@ import Foundation
 final class SignInViewModel: ObservableObject{
     @Published var email:String = ""
     @Published var password:String = ""
-    @Published var passwordVisible = false
-    
-    func showPasswordPressed(){
-        passwordVisible.toggle()
-    }
-    
-    func getEyeImage()->String{
-        return passwordVisible ? "eye" : "eye.slash.fill"
-    }
+
+    @Published var emailWarning:String?
+    @Published var passwordWarning:String?
     
     func signInPressed(){
         print("sign in")
+    }
+    
+    func isFormValid()->Bool{
+        var flag:Bool = true
+        emailWarning = ""
+        passwordWarning = ""
+        if email == ""{
+            flag = false
+            emailWarning = "Email Required"
+        }
+        if password == ""{
+            flag = false
+            passwordWarning = "Password Required"
+        }
+        return flag
     }
 }

@@ -17,49 +17,13 @@ struct SignUpView: View {
                     Color(K.Colors.canvasColor)
                         .edgesIgnoringSafeArea(.all)
                     VStack{
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(Color(K.Colors.tileColor))
-                            .overlay{
-                                ZStack{
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .stroke(Color(K.Colors.secondaryColor))
-                                    TextField("Email", text: $viewModel.email)
-                                        .tint(Color(UIColor.label))
-                                        .padding(.all)
-                                }
-                            }
-                            .padding(.all)
-                            .frame(height: 100)
+                        FormElements.InputFieldView(input: $viewModel.name, titleShown: "Name", warningMessage: $viewModel.nameWarning, isSecuredOn: false)
                         
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(Color(K.Colors.tileColor))
-                            .overlay{
-                                ZStack{
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .stroke(Color(K.Colors.secondaryColor))
-                                    HStack{
-                                        if viewModel.passwordVisible{
-                                            TextField("Password", text: $viewModel.password)
-                                                .tint(Color(UIColor.label))
-                                                .padding(.all)
-                                        }else{
-                                            SecureField("Password", text: $viewModel.password)
-                                                .tint(Color(UIColor.label))
-                                                .padding(.all)
-                                        }
-                                        
-                                        Button {
-                                            viewModel.showPasswordPressed()
-                                        } label: {
-                                            Image(systemName: viewModel.getEyeImage())
-                                        }
-                                        .foregroundColor(Color(UIColor.label))
-                                        .padding(.all)
-                                    }
-                                }
-                            }
-                            .padding(.all)
-                            .frame(height: 100)
+                        FormElements.InputFieldView(input: $viewModel.userName, titleShown: "User Name", warningMessage: $viewModel.userNameWarning, isSecuredOn: false)
+                        
+                        FormElements.InputFieldView(input: $viewModel.email, titleShown: "Email", warningMessage: $viewModel.emailWarning, isSecuredOn: false)
+                        
+                        FormElements.InputFieldView(input: $viewModel.password, titleShown: "Password", warningMessage: $viewModel.passwordWarning, isSecuredOn: true)
                         
                         HStack {
                             Text("Already have an account?")
@@ -78,15 +42,7 @@ struct SignUpView: View {
                         Button {
 
                         } label: {
-                            RoundedRectangle(cornerRadius: 26)
-                                .foregroundColor(Color(K.Colors.primaryColor))
-                                .overlay{
-                                    Text("Sign Up")
-                                        .foregroundColor(Color.white)
-                                        .font(.system(size: 25))
-                                }
-                                .padding(.all)
-                                .frame(height: 90)
+                            FormElements.FormButtonLabelView(buttonTitle: "Sign Up")
                         }
                         
                         Spacer()

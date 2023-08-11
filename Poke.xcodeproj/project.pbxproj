@@ -30,6 +30,7 @@
 		0066D6792A8686D900685C71 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6782A8686D900685C71 /* SettingsView.swift */; };
 		0066D67B2A86882D00685C71 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0066D67A2A86882D00685C71 /* GoogleService-Info.plist */; };
 		0066D67D2A8688DC00685C71 /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D67C2A8688DC00685C71 /* FriendListView.swift */; };
+		0066D6802A868E9200685C71 /* FormElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D67F2A868E9200685C71 /* FormElements.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		0066D6782A8686D900685C71 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0066D67A2A86882D00685C71 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0066D67C2A8688DC00685C71 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
+		0066D67F2A868E9200685C71 /* FormElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormElements.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				0066D66D2A867FD400685C71 /* Model */,
 				0066D6522A85577A00685C71 /* View */,
 				0066D64F2A85524E00685C71 /* ViewModel */,
+				0066D67E2A868B7300685C71 /* CustomView */,
 				0066D6612A866B2C00685C71 /* Route */,
 				0066D63F2A8526E100685C71 /* Assets.xcassets */,
 				0066D6412A8526E100685C71 /* Preview Content */,
@@ -151,6 +154,14 @@
 				0066D66E2A867FEC00685C71 /* AuthManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0066D67E2A868B7300685C71 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				0066D67F2A868E9200685C71 /* FormElements.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +251,7 @@
 				0066D6772A8686C400685C71 /* ChatBoxView.swift in Sources */,
 				0066D65C2A8656FB00685C71 /* Router.swift in Sources */,
 				0066D6602A86672D00685C71 /* ViewFactory.swift in Sources */,
+				0066D6802A868E9200685C71 /* FormElements.swift in Sources */,
 				0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */,
 				0066D6792A8686D900685C71 /* SettingsView.swift in Sources */,
 				0066D6512A85541900685C71 /* SignUpViewModel.swift in Sources */,
