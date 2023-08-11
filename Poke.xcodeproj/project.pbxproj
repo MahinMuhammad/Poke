@@ -31,6 +31,7 @@
 		0066D67B2A86882D00685C71 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0066D67A2A86882D00685C71 /* GoogleService-Info.plist */; };
 		0066D67D2A8688DC00685C71 /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D67C2A8688DC00685C71 /* FriendListView.swift */; };
 		0066D6802A868E9200685C71 /* FormElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D67F2A868E9200685C71 /* FormElements.swift */; };
+		0066D6822A86990B00685C71 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6812A86990B00685C71 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		0066D67A2A86882D00685C71 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0066D67C2A8688DC00685C71 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
 		0066D67F2A868E9200685C71 /* FormElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormElements.swift; sourceTree = "<group>"; };
+		0066D6812A86990B00685C71 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				0066D66E2A867FEC00685C71 /* AuthManager.swift */,
+				0066D6812A86990B00685C71 /* DataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				0066D6512A85541900685C71 /* SignUpViewModel.swift in Sources */,
 				0066D66F2A867FEC00685C71 /* AuthManager.swift in Sources */,
 				0066D6752A8686AC00685C71 /* ChatListView.swift in Sources */,
+				0066D6822A86990B00685C71 /* DataManager.swift in Sources */,
 				0066D67D2A8688DC00685C71 /* FriendListView.swift in Sources */,
 				0066D65E2A86662D00685C71 /* Destination.swift in Sources */,
 				0066D64E2A85524300685C71 /* SignInViewModel.swift in Sources */,
