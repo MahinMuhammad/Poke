@@ -45,6 +45,7 @@ struct SignInView: View {
                         Spacer()
                     }
                     .navigationTitle("Sign In")
+                    .navigationBarTitleDisplayMode(.large)
                     .navigationBarBackButtonHidden(true)
                 }
             }
