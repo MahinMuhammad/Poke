@@ -10,9 +10,9 @@ import SwiftUI
 struct SignInView: View {
     
     @StateObject private var viewModel = SignInViewModel()
-    @EnvironmentObject var router: Router
-
+    
     var body: some View {
+        NavigationStack {
             ZStack{
                 Color(K.Colors.canvasColor)
                     .edgesIgnoringSafeArea(.all)
@@ -25,7 +25,7 @@ struct SignInView: View {
                         HStack {
                             Text("Don't have an account?")
                                 .fontWeight(.semibold)
-                            NavigationLink(value: Destination.signUp) {
+                            NavigationLink(destination: SignUpView()) {
                                 Text("Sign Up")
                                     .underline()
                                     .fontWeight(.bold)
@@ -36,7 +36,7 @@ struct SignInView: View {
                         
                         Button {
                             if viewModel.isFormValid(){
-                                viewModel.signInPressed(use: router)
+                                viewModel.signInPressed()
                             }
                         } label: {
                             FormElements.FormButtonLabelView(buttonTitle: "Sign In")
@@ -45,11 +45,10 @@ struct SignInView: View {
                         Spacer()
                     }
                     .navigationTitle("Sign In")
-                    .navigationDestination(for: Destination.self) { destination in
-                        ViewFactory.viewForDestination(destination)
-                }
+                    .navigationBarBackButtonHidden(true)
                 }
             }
+        }
     }
 }
 

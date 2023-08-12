@@ -25,7 +25,7 @@ struct PokeApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.path){
-                MainView() //MainView is actually NavigationStack for whole app
+                TabBarView()
                     .onAppear {
                     #if DEBUG
                                         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")

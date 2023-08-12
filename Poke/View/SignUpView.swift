@@ -10,7 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     
     @StateObject var viewModel = SignUpViewModel()
-    @EnvironmentObject var router: Router
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
             ZStack{
@@ -30,7 +30,7 @@ struct SignUpView: View {
                                 Text("Already have an account?")
                                     .fontWeight(.semibold)
                                 Button {
-                                    router.popToRoot()
+                                    self.presentationMode.wrappedValue.dismiss()
                                 } label: {
                                     Text("Sign In")
                                         .underline()
@@ -42,7 +42,7 @@ struct SignUpView: View {
                             
                             Button {
                                 if viewModel.isFormValid(){
-                                    viewModel.signUpPressed(use: router)
+                                    viewModel.signUpPressed()
                                 }
                             } label: {
                                 FormElements.FormButtonLabelView(buttonTitle: "Sign Up")

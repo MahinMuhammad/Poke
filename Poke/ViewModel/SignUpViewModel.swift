@@ -21,8 +21,8 @@ final class SignUpViewModel: ObservableObject{
     let userDataManager = UserDataManager.shared
     let authManager = AuthManager.shared
     
-    func signUpPressed(use router: Router){
-        authManager.signUpUser(name: name, userName: userName, email: email, password: password, use: router)
+    func signUpPressed(){
+        authManager.signUpUser(name: name, userName: userName, email: email, password: password)
     }
     
     func isFormValid()->Bool{

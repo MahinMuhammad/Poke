@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @StateObject var authManager = AuthManager.shared
+    
     var body: some View {
         TabView{
             ChatListView()
@@ -26,6 +28,9 @@ struct TabBarView: View {
                 }
         }
         .navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: Binding<Bool>(get: {return !authManager.isSignedIn}, set: { p in authManager.isSignedIn = p})) {
+            SignInView()
+        }
     }
 }
 

@@ -16,8 +16,8 @@ final class SignInViewModel: ObservableObject{
     
     let authManager = AuthManager.shared
     
-    func signInPressed(use router:Router){
-        authManager.signInUser(email: email, password: password, use: router)
+    func signInPressed(){
+        authManager.signInUser(email: email, password: password)
     }
     
     func isFormValid()->Bool{
