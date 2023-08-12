@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 final class SignInViewModel: ObservableObject{
     @Published var email:String = ""
@@ -17,7 +18,21 @@ final class SignInViewModel: ObservableObject{
     let authManager = AuthManager.shared
     
     func signInPressed(){
-        authManager.signInUser(email: email, password: password)
+        authManager.signInUser(email: email, password: password){error in
+            if let err = error{
+                let nsError = err as NSError
+                switch nsError.code{
+                case AuthErrorCode.userNotFound.rawValue:
+                    self.emailWarning = "user not found"
+                case AuthErrorCode.invalidEmail.rawValue:
+                    self.emailWarning = "email is invalid"
+                case AuthErrorCode.wrongPassword.rawValue:
+                    self.passwordWarning = "wrong password"
+                default:
+                    print("Failed to sign up with error: \(err)")
+                }
+            }
+        }
     }
     
     func isFormValid()->Bool{

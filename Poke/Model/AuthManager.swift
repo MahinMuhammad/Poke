@@ -36,10 +36,11 @@ final class AuthManager: ObservableObject{
         }
     }
     
-    func signInUser(email:String, password:String){
+    func signInUser(email:String, password:String, completion: @escaping (Error?) -> Void){
         Auth.auth().signIn(withEmail: email, password: password){ response, error in
             if let e = error{
-                print("SignIn failed with error: \(e)")
+                let err = e as NSError
+                completion(err)
             }else{
                 print("User signIn successfull!")
                 DispatchQueue.main.async{
