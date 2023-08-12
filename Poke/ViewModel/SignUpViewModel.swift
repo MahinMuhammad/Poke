@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 final class SignUpViewModel: ObservableObject{
     @Published var name:String = ""
@@ -22,7 +23,17 @@ final class SignUpViewModel: ObservableObject{
     let authManager = AuthManager.shared
     
     func signUpPressed(){
-        authManager.signUpUser(name: name, userName: userName, email: email, password: password)
+        authManager.signUpUser(name: name, userName: userName, email: email, password: password){ error in
+            if let err = error{
+                let nsError = err as NSError
+                switch nsError.code{
+                case AuthErrorCode.emailAlreadyInUse.rawValue:
+                    self.emailWarning = "email is alreay in use"
+                default:
+                    print("Failed to sign up with error: \(err)")
+                }
+            }
+        }
     }
     
     func isFormValid()->Bool{
@@ -38,20 +49,10 @@ final class SignUpViewModel: ObservableObject{
         if userName == ""{
             flag = false
             userNameWarning = "User Name required"
-        }else{
-            if !userDataManager.isUserNameUnique(for: userName){
-                flag = false
-                userNameWarning = "User Name already in use"
-            }
         }
         if email == ""{
             flag = false
             emailWarning = "Email Required"
-        }else{
-            if !userDataManager.isEmailUnique(for: email){
-                flag = false
-                emailWarning = "Email already in use"
-            }
         }
         if password == ""{
             flag = false

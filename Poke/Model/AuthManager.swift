@@ -21,10 +21,11 @@ final class AuthManager: ObservableObject{
         }
     }
     
-    func signUpUser(name:String, userName:String, email:String, password:String){
+    func signUpUser(name:String, userName:String, email:String, password:String, completion: @escaping (Error?) -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { [self] authResult, error in
             if let e = error{
-                print("Failed to sign up with error: \(e)")
+                let err = e as NSError
+                completion(err)
             }else{
                 print("User registration successfull!")
                 DispatchQueue.main.async {
