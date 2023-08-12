@@ -29,6 +29,8 @@ final class SignUpViewModel: ObservableObject{
                 switch nsError.code{
                 case AuthErrorCode.emailAlreadyInUse.rawValue:
                     self.emailWarning = "email is alreay in use"
+                case AuthErrorCode.invalidEmail.rawValue:
+                    self.emailWarning = "email is invalid"
                 default:
                     print("Failed to sign up with error: \(err)")
                 }
