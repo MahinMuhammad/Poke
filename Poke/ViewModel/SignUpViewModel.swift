@@ -23,16 +23,24 @@ final class SignUpViewModel: ObservableObject{
     let authManager = AuthManager.shared
     
     func signUpPressed(){
-        authManager.signUpUser(name: name, userName: userName, email: email, password: password){ error in
-            if let err = error{
-                let nsError = err as NSError
-                switch nsError.code{
-                case AuthErrorCode.emailAlreadyInUse.rawValue:
-                    self.emailWarning = "email is alreay in use"
-                case AuthErrorCode.invalidEmail.rawValue:
-                    self.emailWarning = "email is invalid"
-                default:
-                    print("Failed to sign up with error: \(err)")
+        userDataManager.isUserNameUnique(for: userName.lowercased()) { unique in
+            if let safeUnique = unique{
+                if safeUnique{
+                    self.authManager.signUpUser(name: self.name, userName: self.userName.lowercased(), email: self.email, password: self.password){ error in
+                        if let err = error{
+                            let nsError = err as NSError
+                            switch nsError.code{
+                            case AuthErrorCode.emailAlreadyInUse.rawValue:
+                                self.emailWarning = "email is alreay in use"
+                            case AuthErrorCode.invalidEmail.rawValue:
+                                self.emailWarning = "email is invalid"
+                            default:
+                                print("Failed to sign up with error: \(err)")
+                            }
+                        }
+                    }
+                }else{
+                    self.userNameWarning = "userName is already in use"
                 }
             }
         }
