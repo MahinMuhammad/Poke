@@ -34,6 +34,8 @@ final class SignUpViewModel: ObservableObject{
                                 self.emailWarning = "email is alreay in use"
                             case AuthErrorCode.invalidEmail.rawValue:
                                 self.emailWarning = "email is invalid"
+                            case AuthErrorCode.weakPassword.rawValue:
+                                self.passwordWarning = "password is too weak"
                             default:
                                 print("Failed to sign up with error: \(err)")
                             }

@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Chat{
+struct Chat: Hashable, Identifiable{
+    var id: String
     var senderEmail:String
     var receiverEmail:String
     var content:String

@@ -35,6 +35,7 @@
 		0066D6842A869C7400685C71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6832A869C7400685C71 /* User.swift */; };
 		0066D6862A869DD600685C71 /* ChatDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6852A869DD600685C71 /* ChatDataManager.swift */; };
 		0066D6882A869DE500685C71 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6872A869DE500685C71 /* Chat.swift */; };
+		00CE95242A8936F400C253D8 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE95232A8936F400C253D8 /* ChatListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		0066D6832A869C7400685C71 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0066D6852A869DD600685C71 /* ChatDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataManager.swift; sourceTree = "<group>"; };
 		0066D6872A869DE500685C71 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		00CE95232A8936F400C253D8 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				0066D6702A8681AA00685C71 /* MainViewModel.swift */,
 				0066D64D2A85524300685C71 /* SignInViewModel.swift */,
 				0066D6502A85541900685C71 /* SignUpViewModel.swift */,
+				00CE95232A8936F400C253D8 /* ChatListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				0066D6732A8682C400685C71 /* TabBarView.swift in Sources */,
 				0066D63E2A8526DF00685C71 /* SignInView.swift in Sources */,
 				0066D6632A866BB200685C71 /* MainView.swift in Sources */,
+				00CE95242A8936F400C253D8 /* ChatListViewModel.swift in Sources */,
 				0066D6772A8686C400685C71 /* ChatBoxView.swift in Sources */,
 				0066D65C2A8656FB00685C71 /* Router.swift in Sources */,
 				0066D6862A869DD600685C71 /* ChatDataManager.swift in Sources */,
