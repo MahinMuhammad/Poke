@@ -20,23 +20,58 @@ struct ChatListView: View {
                         image
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 128, height: 128)
+                            .frame(width: 60, height: 60)
                             .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .clipShape(Circle())
                     }placeholder: {
                         Image(systemName: "photo")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 128, height: 128)
+                            .frame(width: 60, height: 60)
                             .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .clipShape(Circle())
 
+                    }
+                    
+                    Spacer()
+                        .frame(width: 20)
+                    
+                    VStack(alignment: .leading){
+                        Text(d.name)
+                            .fontWeight(.bold)
+                            .font(.system(size: 20))
+                        
+                        Spacer()
+                            .frame(height: 10)
+                        
+                        Text(chat.content)
+                            .lineLimit(3)
+                            .fontWeight(.regular)
+                            .font(.system(size: 17))
+                    }
+                    
+                    Spacer()
+                    
+                    VStack{
+                        Text(d.time)
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.thin)
+                        
+                        RoundedRectangle(cornerRadius: 6)
+                            .foregroundColor(Color(K.Colors.primaryColor))
+                            .frame(width: 20, height: 20)
+                            .overlay{
+                                Text(d.numOfMessages)
+                                    .foregroundColor(Color.white)
+                                    .fontWeight(.bold)
+                            }
                     }
                 }
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color(K.Colors.canvasColor))
             }
             .listStyle(.plain)
+            .navigationTitle("Messages")
         }
     }
 }
@@ -49,5 +84,8 @@ struct ChatListView_Previews: PreviewProvider {
 
 
 class Dummy:ObservableObject{
-    @Published let propic:URL? = URL(string: "https://picsum.photos/200")
+    @Published var propic:URL? = URL(string: "https://picsum.photos/200")
+    @Published var name:String = "Mahin Rahman"
+    @Published var time:String = "5 min"
+    @Published var numOfMessages = "1"
 }
