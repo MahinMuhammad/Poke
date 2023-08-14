@@ -9,8 +9,9 @@ import Foundation
 import Firebase
 
 final class SignInViewModel: ObservableObject{
-    @Published var email:String = ""
-    @Published var password:String = ""
+    
+    @Published var email:String = Dummy.email
+    @Published var password:String = Dummy.password
 
     @Published var emailWarning:String?
     @Published var passwordWarning:String?

@@ -33,6 +33,7 @@
 		0066D6842A869C7400685C71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6832A869C7400685C71 /* User.swift */; };
 		0066D6862A869DD600685C71 /* ChatDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6852A869DD600685C71 /* ChatDataManager.swift */; };
 		0066D6882A869DE500685C71 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6872A869DE500685C71 /* Chat.swift */; };
+		0099AA972A8A690E00803446 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099AA962A8A690E00803446 /* Dummy.swift */; };
 		00CE95242A8936F400C253D8 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE95232A8936F400C253D8 /* ChatListViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		0066D6832A869C7400685C71 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0066D6852A869DD600685C71 /* ChatDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataManager.swift; sourceTree = "<group>"; };
 		0066D6872A869DE500685C71 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		0099AA962A8A690E00803446 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		00CE95232A8936F400C253D8 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				0066D67A2A86882D00685C71 /* GoogleService-Info.plist */,
+				0099AA962A8A690E00803446 /* Dummy.swift */,
 				0066D6492A853D8900685C71 /* K.swift */,
 				0066D63B2A8526DF00685C71 /* PokeApp.swift */,
 				0066D66D2A867FD400685C71 /* Model */,
@@ -261,6 +264,7 @@
 				0066D65C2A8656FB00685C71 /* Router.swift in Sources */,
 				0066D6862A869DD600685C71 /* ChatDataManager.swift in Sources */,
 				0066D6602A86672D00685C71 /* ViewFactory.swift in Sources */,
+				0099AA972A8A690E00803446 /* Dummy.swift in Sources */,
 				0066D6842A869C7400685C71 /* User.swift in Sources */,
 				0066D6802A868E9200685C71 /* FormElements.swift in Sources */,
 				0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */,
