@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct ChatBoxView: View {
+    @EnvironmentObject var router: Router
+    
+    @ObservedObject var viewModel: ChatBoxViewModel
+    
+    init(sending:String, receiving:String){
+        self.viewModel = ChatBoxViewModel(senderEmail: sending, receiverEmail: receiving)
+    }
     var body: some View {
-        Text("ChatBoxView")
+        Text(String(router.path.count))
     }
 }
 
 struct ChatBoxView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatBoxView()
+        ChatBoxView(sending: "", receiving: "")
     }
 }
