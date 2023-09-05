@@ -10,14 +10,8 @@ import SwiftUI
 struct TabBarView: View {
     
     @StateObject var authManager = AuthManager.shared
-    
-    enum Tabs{
-        case chatList
-        case friendList
-        case settings
-    }
-    
-    @State var selectedTab = Tabs.chatList
+    @StateObject var viewModel = TabBarViewModel()
+
     
     var body: some View {
         
@@ -26,7 +20,7 @@ struct TabBarView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack{
-                switch selectedTab{
+                switch viewModel.selectedTab{
                 case .chatList:
                     ChatListView()
                 case .friendList:
@@ -45,29 +39,29 @@ struct TabBarView: View {
                     .overlay {
                         HStack{
                             Button {
-                                selectedTab = Tabs.chatList
+                                viewModel.selectedTab = TabBarViewModel.Tabs.chatList
                             } label: {
                                 Image(systemName: "message")
                             }
-                            .foregroundColor(selectedTab == Tabs.chatList ? .white : .gray)
+                            .foregroundColor(viewModel.selectedTab == TabBarViewModel.Tabs.chatList ? .white : .gray)
                             
                             Spacer()
                             
                             Button {
-                                selectedTab = Tabs.friendList
+                                viewModel.selectedTab = TabBarViewModel.Tabs.friendList
                             } label: {
                                 Image(systemName: "person.2")
                             }
-                            .foregroundColor(selectedTab == Tabs.friendList ? .white : .gray)
+                            .foregroundColor(viewModel.selectedTab == TabBarViewModel.Tabs.friendList ? .white : .gray)
                             
                             Spacer()
                             
                             Button {
-                                selectedTab = Tabs.settings
+                                viewModel.selectedTab = TabBarViewModel.Tabs.settings
                             } label: {
                                 Image(systemName: "slider.horizontal.3")
                             }
-                            .foregroundColor(selectedTab == Tabs.settings ? .white : .gray)
+                            .foregroundColor(viewModel.selectedTab == TabBarViewModel.Tabs.settings ? .white : .gray)
                         }
                         .imageScale(.large)
                         .padding(.leading, 50)
