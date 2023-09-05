@@ -8,34 +8,75 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
     @StateObject var authManager = AuthManager.shared
     
+    enum Tabs{
+        case chatList
+        case friendList
+        case settings
+    }
+    
+    @State var selectedTab = Tabs.chatList
+    
     var body: some View {
-        TabView{
-            ChatListView()
-                .tabItem {
-                    Image(systemName: "message")
-                }
+        
+        ZStack {
+            Color(K.Colors.canvasColor)
+                .edgesIgnoringSafeArea(.all)
             
-            FriendListView()
-                .tabItem {
-                    Image(systemName: "person.2")
+            VStack{
+                switch selectedTab{
+                case .chatList:
+                    ChatListView()
+                case .friendList:
+                    FriendListView()
+                case .settings:
+                    SettingsView()
                 }
-            
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "slider.horizontal.3")
-                }
+                
+                Spacer() // to keep tabbar view at bottom always
+                
+                RoundedRectangle(cornerRadius: 50)
+                    .foregroundColor(Color(K.Colors.tileColor))
+                    .frame(height: 100)
+                    .padding(.top,-30)
+                    .padding(.bottom, -35)
+                    .overlay {
+                        HStack{
+                            Button {
+                                selectedTab = Tabs.chatList
+                            } label: {
+                                Image(systemName: "message")
+                            }
+                            .foregroundColor(selectedTab == Tabs.chatList ? .white : .gray)
+                            
+                            Spacer()
+                            
+                            Button {
+                                selectedTab = Tabs.friendList
+                            } label: {
+                                Image(systemName: "person.2")
+                            }
+                            .foregroundColor(selectedTab == Tabs.friendList ? .white : .gray)
+                            
+                            Spacer()
+                            
+                            Button {
+                                selectedTab = Tabs.settings
+                            } label: {
+                                Image(systemName: "slider.horizontal.3")
+                            }
+                            .foregroundColor(selectedTab == Tabs.settings ? .white : .gray)
+                        }
+                        .imageScale(.large)
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
+                    }
+            }
         }
-        .navigationBarBackButtonHidden(true)
         .navigationDestination(isPresented: Binding<Bool>(get: {return !authManager.isSignedIn}, set: { p in authManager.isSignedIn = p})) {
             SignInView()
-        }
-        .onAppear {
-            // correct the transparency bug for Tab bars
-            let tabBarAppearance = UITabBarAppearance()
-//            tabBarAppearance.configureWithOpaqueBackground()
-            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         }
     }
 }

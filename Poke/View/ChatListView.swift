@@ -30,7 +30,7 @@ struct ChatListView: View {
                             .foregroundColor(Color.gray)
                             .imageScale(.large)
                     }
-
+                    
                 }
                 .padding(.leading,20)
                 .padding(.trailing,20)
@@ -44,7 +44,7 @@ struct ChatListView: View {
                         HStack{
                             Image(systemName: "magnifyingglass")
                                 .foregroundColor(.gray)
-
+                            
                             TextField("Search for messages or users", text: $searchBarInput)
                                 .tint(Color(UIColor.label))
                                 .padding(.all)
@@ -105,16 +105,18 @@ struct ChatListView: View {
                                             .fontWeight(.bold)
                                     }
                             }
+                            .padding(.trailing,10)
                         }
                     }
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color(K.Colors.canvasColor))
                     .padding(.bottom, 25)
+                    .padding(.trailing,-27)
                 }
                 .listStyle(.plain)
                 .navigationDestination(for: Chat.self) { chat in
                     ChatBoxView(sending: chat.senderEmail, receiving: chat.receiverEmail)
-            }
+                }
             }
         }
     }
