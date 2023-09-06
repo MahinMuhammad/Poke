@@ -9,12 +9,16 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var d = Dummy()
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack{
             Color(K.Colors.canvasColor)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                Button("back") {
+                    dismiss()
+                }
                 AsyncImage(url: d.propic){  image in
                     image
                         .resizable()

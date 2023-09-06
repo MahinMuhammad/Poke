@@ -176,6 +176,9 @@ struct SettingsView: View {
             }
         }
         .background(Color(K.Colors.canvasColor))
+        .onRotate { newOrientation in
+            viewModel.showProfileView = false //changing oriantation of sheet without being closed makes a frontend problem
+        }
     }
 }
 
