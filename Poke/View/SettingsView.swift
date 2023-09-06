@@ -11,6 +11,7 @@ struct SettingsView: View {
     @AppStorage("appTheme") var isDarkModeOn = false
     
     @StateObject var viewModel = SettingsViewModel()
+    @StateObject var d = Dummy()
     
     var body: some View {
         VStack{
@@ -24,9 +25,21 @@ struct SettingsView: View {
                 Button {
                     viewModel.showProfileView = true
                 } label: {
-                    Image(systemName: "square.and.pencil")
-                        .foregroundColor(Color.gray)
-                        .imageScale(.large)
+                    AsyncImage(url: d.propic){  image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 40)
+                            .clipped()
+                            .clipShape(Circle())
+                    }placeholder: {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 40)
+                            .clipped()
+                            .clipShape(Circle())
+                    }
                 }
                 .sheet(isPresented: $viewModel.showProfileView, content: ProfileView.init)
             }

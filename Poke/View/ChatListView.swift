@@ -66,7 +66,6 @@ struct ChatListView: View {
                                 .frame(width: 60, height: 60)
                                 .clipped()
                                 .clipShape(Circle())
-                            
                         }
                         
                         Spacer()
