@@ -22,6 +22,9 @@ struct PokeApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @AppStorage("appTheme") private var isDarkModeOn = false
+    let currentSystemScheme = UITraitCollection.current.userInterfaceStyle
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.path){
@@ -33,6 +36,10 @@ struct PokeApp: App {
                     }
             }
             .environmentObject(router)
+            .onAppear {
+                isDarkModeOn = (currentSystemScheme == .dark)
+            }
+            .preferredColorScheme(isDarkModeOn ? .dark : .light)
         }
     }
 }

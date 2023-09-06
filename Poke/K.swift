@@ -13,6 +13,7 @@ struct K{
         static let tileColor = "TileColor"
         static let secondaryColor = "SecondaryColor"
         static let primaryColor = "PrimaryColor"
+        static let settingsColor = "SettingsColor"
     }
     
     struct FStore{

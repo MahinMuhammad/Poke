@@ -41,7 +41,7 @@ struct TabBarView: View {
                             Button {
                                 viewModel.selectedTab = .chatList
                             } label: {
-                                Image(systemName: "message")
+                                Image(systemName: "bubble.left.and.bubble.right")
                             }
                             .foregroundColor(viewModel.selectedTab == .chatList ? Color(UIColor.label) : .gray)
                             
