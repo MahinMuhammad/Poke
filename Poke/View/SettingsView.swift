@@ -39,6 +39,7 @@ struct SettingsView: View {
                             .frame(width: 40, height: 40)
                             .clipped()
                             .clipShape(Circle())
+                            .tint(.black)
                     }
                 }
                 .sheet(isPresented: $viewModel.showProfileView, content: ProfileView.init)

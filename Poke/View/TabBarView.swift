@@ -11,7 +11,7 @@ struct TabBarView: View {
     
     @StateObject var authManager = AuthManager.shared
     @StateObject var viewModel = TabBarViewModel()
-
+    let impactMed = UIImpactFeedbackGenerator(style: .soft)
     
     var body: some View {
         
@@ -40,6 +40,7 @@ struct TabBarView: View {
                         HStack{
                             Button {
                                 viewModel.selectedTab = .chatList
+                                impactMed.impactOccurred()
                             } label: {
                                 Image(systemName: "bubble.left.and.bubble.right")
                             }
@@ -49,6 +50,7 @@ struct TabBarView: View {
                             
                             Button {
                                 viewModel.selectedTab = .friendList
+                                impactMed.impactOccurred()
                             } label: {
                                 Image(systemName: "person.2")
                             }
@@ -58,6 +60,7 @@ struct TabBarView: View {
                             
                             Button {
                                 viewModel.selectedTab = .settings
+                                impactMed.impactOccurred()
                             } label: {
                                 Image(systemName: "slider.horizontal.3")
                             }
