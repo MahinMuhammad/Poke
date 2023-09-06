@@ -13,28 +13,28 @@ struct SettingsView: View {
     @StateObject var viewModel = SettingsViewModel()
     
     var body: some View {
-        ScrollView{
-            VStack{
-                HStack {
-                    Text("Settings")
-                        .fontWeight(.bold)
-                        .font(.system(size: 32))
-                    
-                    Spacer()
-                    
-                    Button {
-                        viewModel.showProfileView = true
-                    } label: {
-                        Image(systemName: "square.and.pencil")
-                            .foregroundColor(Color.gray)
-                            .imageScale(.large)
-                    }
-                    .sheet(isPresented: $viewModel.showProfileView, content: ProfileView.init)
-                }
-                .padding(.leading,20)
-                .padding(.trailing,20)
-                .padding(.top, 40)
+        VStack{
+            HStack {
+                Text("Settings")
+                    .fontWeight(.bold)
+                    .font(.system(size: 32))
                 
+                Spacer()
+                
+                Button {
+                    viewModel.showProfileView = true
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                        .foregroundColor(Color.gray)
+                        .imageScale(.large)
+                }
+                .sheet(isPresented: $viewModel.showProfileView, content: ProfileView.init)
+            }
+            .padding(.leading,20)
+            .padding(.trailing,20)
+            .padding(.top, 40)
+            
+            ScrollView{
                 RoundedRectangle(cornerRadius: 25)
                     .frame(height: 110)
                     .foregroundColor(Color(K.Colors.tileColor))
@@ -137,12 +137,32 @@ struct SettingsView: View {
                     }
                     .padding()
                 
-                Button("Sign Out"){
-                    AuthManager.shared.signOut()
-                }
+                RoundedRectangle(cornerRadius: 25)
+                    .frame(height: 80)
+                    .foregroundColor(Color(K.Colors.tileColor))
+                    .overlay{
+                        Button{
+                            AuthManager.shared.signOut()
+                        }label: {
+                            Text("Log Out")
+                                .fontWeight(.medium)
+                                .font(.system(size: 22))
+                                .tint(Color(UIColor.label))
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .frame(height: 55)
+                                .overlay{
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color(UIColor.label), lineWidth: 1)
+                                }
+                                .padding(10)
+                        }
+                    }
+                    .padding(.leading)
+                    .padding(.trailing)
+                    .padding(.bottom, 25)
             }
-            .background(Color(K.Colors.canvasColor))
         }
+        .background(Color(K.Colors.canvasColor))
     }
 }
 
