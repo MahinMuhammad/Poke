@@ -12,4 +12,5 @@ final class SettingsViewModel:ObservableObject{
     @Published var shakeToReport = false
     @Published var isNotificationOn = false
     @Published var showRemoveAllNewsAlert = false
+    @Published var showProfileView = false
 }

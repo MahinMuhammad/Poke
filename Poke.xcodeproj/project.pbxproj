@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0059BBA12AA87CA700B52D55 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059BBA02AA87CA700B52D55 /* ProfileView.swift */; };
 		0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D63B2A8526DF00685C71 /* PokeApp.swift */; };
 		0066D63E2A8526DF00685C71 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D63D2A8526DF00685C71 /* SignInView.swift */; };
 		0066D6402A8526E100685C71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0066D63F2A8526E100685C71 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0059BBA02AA87CA700B52D55 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0066D6382A8526DF00685C71 /* Poke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Poke.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0066D63B2A8526DF00685C71 /* PokeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeApp.swift; sourceTree = "<group>"; };
 		0066D63D2A8526DF00685C71 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				0066D6762A8686C400685C71 /* ChatBoxView.swift */,
 				0066D67C2A8688DC00685C71 /* FriendListView.swift */,
 				0066D6782A8686D900685C71 /* SettingsView.swift */,
+				0059BBA02AA87CA700B52D55 /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				0066D6842A869C7400685C71 /* User.swift in Sources */,
 				0066D6802A868E9200685C71 /* FormElements.swift in Sources */,
 				0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */,
+				0059BBA12AA87CA700B52D55 /* ProfileView.swift in Sources */,
 				0066D6792A8686D900685C71 /* SettingsView.swift in Sources */,
 				0066D6512A85541900685C71 /* SignUpViewModel.swift in Sources */,
 				0066D66F2A867FEC00685C71 /* AuthManager.swift in Sources */,

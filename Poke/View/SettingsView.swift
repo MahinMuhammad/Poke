@@ -15,6 +15,26 @@ struct SettingsView: View {
     var body: some View {
         ScrollView{
             VStack{
+                HStack {
+                    Text("Settings")
+                        .fontWeight(.bold)
+                        .font(.system(size: 32))
+                    
+                    Spacer()
+                    
+                    Button {
+                        viewModel.showProfileView = true
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            .foregroundColor(Color.gray)
+                            .imageScale(.large)
+                    }
+                    .sheet(isPresented: $viewModel.showProfileView, content: ProfileView.init)
+                }
+                .padding(.leading,20)
+                .padding(.trailing,20)
+                .padding(.top, 40)
+                
                 RoundedRectangle(cornerRadius: 25)
                     .frame(height: 110)
                     .foregroundColor(Color(K.Colors.tileColor))
@@ -45,7 +65,6 @@ struct SettingsView: View {
                         .padding()
                     }
                     .padding()
-                    .padding(.top,50)
                 
                 RoundedRectangle(cornerRadius: 25)
                     .frame(height: 110)
