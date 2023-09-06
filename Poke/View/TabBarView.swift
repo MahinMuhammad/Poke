@@ -39,29 +39,29 @@ struct TabBarView: View {
                     .overlay {
                         HStack{
                             Button {
-                                viewModel.selectedTab = TabBarViewModel.Tabs.chatList
+                                viewModel.selectedTab = .chatList
                             } label: {
                                 Image(systemName: "message")
                             }
-                            .foregroundColor(viewModel.selectedTab == TabBarViewModel.Tabs.chatList ? .white : .gray)
+                            .foregroundColor(viewModel.selectedTab == .chatList ? Color(UIColor.label) : .gray)
                             
                             Spacer()
                             
                             Button {
-                                viewModel.selectedTab = TabBarViewModel.Tabs.friendList
+                                viewModel.selectedTab = .friendList
                             } label: {
                                 Image(systemName: "person.2")
                             }
-                            .foregroundColor(viewModel.selectedTab == TabBarViewModel.Tabs.friendList ? .white : .gray)
+                            .foregroundColor(viewModel.selectedTab == .friendList ? Color(UIColor.label) : .gray)
                             
                             Spacer()
                             
                             Button {
-                                viewModel.selectedTab = TabBarViewModel.Tabs.settings
+                                viewModel.selectedTab = .settings
                             } label: {
                                 Image(systemName: "slider.horizontal.3")
                             }
-                            .foregroundColor(viewModel.selectedTab == TabBarViewModel.Tabs.settings ? .white : .gray)
+                            .foregroundColor(viewModel.selectedTab == .settings ? Color(UIColor.label) : .gray)
                         }
                         .imageScale(.large)
                         .padding(.leading, 50)
@@ -71,6 +71,9 @@ struct TabBarView: View {
         }
         .navigationDestination(isPresented: Binding<Bool>(get: {return !authManager.isSignedIn}, set: { p in authManager.isSignedIn = p})) {
             SignInView()
+        }
+        .onAppear{
+            viewModel.selectedTab = .chatList
         }
     }
 }
