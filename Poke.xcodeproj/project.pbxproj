@@ -36,6 +36,7 @@
 		0066D6882A869DE500685C71 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D6872A869DE500685C71 /* Chat.swift */; };
 		0099AA972A8A690E00803446 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099AA962A8A690E00803446 /* Dummy.swift */; };
 		0099AA9B2A8A8CC700803446 /* ChatBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099AA9A2A8A8CC700803446 /* ChatBoxViewModel.swift */; };
+		009BAE982AA8F10E00600AC6 /* TapTargetResetLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009BAE972AA8F10E00600AC6 /* TapTargetResetLayer.swift */; };
 		009F37AA2AA78008009FAFF6 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009F37A92AA78008009FAFF6 /* TabBarViewModel.swift */; };
 		00CE95242A8936F400C253D8 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE95232A8936F400C253D8 /* ChatListViewModel.swift */; };
 		00E2B2692AA8568C0043FF9F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2B2682AA8568C0043FF9F /* SettingsViewModel.swift */; };
@@ -70,6 +71,7 @@
 		0066D6872A869DE500685C71 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		0099AA962A8A690E00803446 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		0099AA9A2A8A8CC700803446 /* ChatBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxViewModel.swift; sourceTree = "<group>"; };
+		009BAE972AA8F10E00600AC6 /* TapTargetResetLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTargetResetLayer.swift; sourceTree = "<group>"; };
 		009F37A92AA78008009FAFF6 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		00CE95232A8936F400C253D8 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 		00E2B2682AA8568C0043FF9F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				0066D67F2A868E9200685C71 /* FormElements.swift */,
 				00E50AAB2AA8AC270044BEEC /* DeviceRotationViewModifier.swift */,
+				009BAE972AA8F10E00600AC6 /* TapTargetResetLayer.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */,
 				0059BBA12AA87CA700B52D55 /* ProfileView.swift in Sources */,
 				0066D6792A8686D900685C71 /* SettingsView.swift in Sources */,
+				009BAE982AA8F10E00600AC6 /* TapTargetResetLayer.swift in Sources */,
 				0066D6512A85541900685C71 /* SignUpViewModel.swift in Sources */,
 				0066D66F2A867FEC00685C71 /* AuthManager.swift in Sources */,
 				009F37AA2AA78008009FAFF6 /* TabBarViewModel.swift in Sources */,
