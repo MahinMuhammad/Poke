@@ -4,10 +4,10 @@
 <h3>Graphical User Interface</h3>
   <table style="border:none">
     <tr>
-      <td><img src="Documentation/ChatListView.png" height="400"></td>
-      <td><img src="Documentation/SignInView.png" height="400"></td>
-      <td><img src="Documentation/SettingsView.png" height="400"></td>
-      <td><img src="Documentation/MyProfileView.png" height="400"></td>
+      <td><img src="Documentation/ChatListView.png" height="350"></td>
+      <td><img src="Documentation/SignInView.png" height="350"></td>
+      <td><img src="Documentation/SettingsView.png" height="350"></td>
+      <td><img src="Documentation/MyProfileView.png" height="350"></td>
      </tr>
   </table>
   
