@@ -69,7 +69,7 @@ struct SettingsView: View {
                 ScrollView{
                     RoundedRectangle(cornerRadius: 25)
                         .frame(height: 110)
-                        .foregroundColor(Color(K.Colors.tileColor))
+                        .foregroundColor(Color(K.Colors.filedColor))
                         .overlay{
                             VStack{
                                 Toggle(isOn: $viewModel.isActiveStatusOn) {
@@ -100,7 +100,7 @@ struct SettingsView: View {
                     
                     RoundedRectangle(cornerRadius: 25)
                         .frame(height: 110)
-                        .foregroundColor(Color(K.Colors.tileColor))
+                        .foregroundColor(Color(K.Colors.filedColor))
                         .overlay{
                             VStack{
                                 Toggle(isOn: $viewModel.isNotificationOn) {
@@ -131,7 +131,7 @@ struct SettingsView: View {
                     
                     RoundedRectangle(cornerRadius: 25)
                         .frame(height: 110)
-                        .foregroundColor(Color(K.Colors.tileColor))
+                        .foregroundColor(Color(K.Colors.filedColor))
                         .overlay{
                             VStack{
                                 Button{
@@ -171,7 +171,7 @@ struct SettingsView: View {
                     
                     RoundedRectangle(cornerRadius: 25)
                         .frame(height: 80)
-                        .foregroundColor(Color(K.Colors.tileColor))
+                        .foregroundColor(Color(K.Colors.filedColor))
                         .overlay{
                             Button{
                                 AuthManager.shared.signOut()

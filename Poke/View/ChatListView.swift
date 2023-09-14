@@ -50,7 +50,7 @@ struct ChatListView: View {
             .padding(.top, 40)
             
             RoundedRectangle(cornerRadius: 18)
-                .foregroundColor(Color(K.Colors.tileColor))
+                .foregroundColor(Color(K.Colors.filedColor))
                 .frame(height: 40)
                 .padding(.all)
                 .overlay {

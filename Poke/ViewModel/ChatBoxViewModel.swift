@@ -26,6 +26,7 @@ import Foundation
 final class ChatBoxViewModel:ObservableObject{
     @Published var senderEmail:String
     @Published var receiverEmail:String
+    @Published var message:String = ""
     
     init(senderEmail:String, receiverEmail:String){
         self.senderEmail = senderEmail
