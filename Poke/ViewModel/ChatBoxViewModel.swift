@@ -27,6 +27,7 @@ final class ChatBoxViewModel:ObservableObject{
     @Published var senderEmail:String
     @Published var receiverEmail:String
     @Published var message:String = ""
+    @Published var chatCollection = Dummy.chats
     
     init(senderEmail:String, receiverEmail:String){
         self.senderEmail = senderEmail

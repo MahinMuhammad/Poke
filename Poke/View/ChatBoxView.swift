@@ -27,6 +27,7 @@ struct ChatBoxView: View {
     @EnvironmentObject var router: Router
     @StateObject var d = Dummy()
     @ObservedObject var viewModel: ChatBoxViewModel
+    @Environment(\.colorScheme) var colorScheme //for smilling face
     
     init(sending:String, receiving:String){
         self.viewModel = ChatBoxViewModel(senderEmail: sending, receiverEmail: receiving)
@@ -55,15 +56,18 @@ struct ChatBoxView: View {
                         Text("Mahin Rahman")
                             .fontWeight(.bold)
                             .font(.system(size: 25))
+                            .lineLimit(1)
                         
                         Spacer()
-                            .frame(height: 12)
+                            .frame(height: 10)
                         
                         Text("Last Online at 10:45 AM")
                             .foregroundColor(.gray)
                             .fontWeight(.regular)
                             .font(.system(size: 17))
+                            .lineLimit(1)
                     }
+                    .frame(width: 185)
                     
                     Spacer()
                     
@@ -71,20 +75,20 @@ struct ChatBoxView: View {
                         image
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 60, height: 60)
+                            .frame(width: 50, height: 60)
                             .clipped()
                             .clipShape(Circle())
                     }placeholder: {
                         Image(systemName: "photo")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 60, height: 60)
+                            .frame(width: 50, height: 60)
                             .clipped()
                             .clipShape(Circle())
                     }
                 }
                 .padding(.all)
-                .padding(.top, 20)
+                .padding(.top, 15)
                 
                 Spacer()
                 
@@ -94,6 +98,54 @@ struct ChatBoxView: View {
                     .padding(.top, 5)
                     .overlay{
                         VStack{
+                            List(viewModel.chatCollection){ chat in
+                                if chat.senderEmail == "mahin@example.com"{
+                                    VStack(alignment: .trailing){
+                                        Text(chat.content)
+                                            .fontWeight(.regular)
+                                            .font(.system(size: 17))
+                                            .padding()
+                                            .background {
+                                                Color(K.Colors.primaryColor)
+                                                    .cornerRadius(15)
+                                            }
+                                        
+                                        Text("10:30 PM")
+                                            .foregroundColor(.gray)
+                                            .fontWeight(.regular)
+                                            .font(.system(size: 15))
+                                            .padding(.trailing, 5)
+                                    }
+                                    .padding(.leading, 50)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                    .listRowSeparator(.hidden)
+                                    .listRowBackground(Color(K.Colors.filedColor))
+                                }else{
+                                    VStack(alignment: .leading){
+                                        Text(chat.content)
+                                            .fontWeight(.regular)
+                                            .font(.system(size: 17))
+                                            .padding()
+                                            .background {
+                                                Color(K.Colors.secondaryColor)
+                                                    .cornerRadius(15)
+                                            }
+                                        
+                                        Text("10:30 PM")
+                                            .foregroundColor(.gray)
+                                            .fontWeight(.regular)
+                                            .font(.system(size: 15))
+                                            .padding(.leading, 5)
+                                    }
+                                    .padding(.trailing, 50)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .listRowSeparator(.hidden)
+                                    .listRowBackground(Color(K.Colors.filedColor))
+                                }
+                            }
+                            .listStyle(.plain)
+                            .padding(.top, 45)
+                            
                             Spacer()
                             
                             HStack{
@@ -111,17 +163,18 @@ struct ChatBoxView: View {
                                             }
                                             
                                             TextField("Message...", text: $viewModel.message)
+                                                .tint(Color(UIColor.label))
                                                 .padding()
                                             
                                             Button {
                                                 
                                             } label: {
-                                                Image(systemName: "face.smiling.fill")
+                                                Image(systemName:(colorScheme == .dark ? "face.smiling.fill" : "face.smiling"))
                                                     .foregroundColor(Color(UIColor.label))
                                                     .imageScale(.large)
                                                     .fontWeight(.semibold)
                                             }
-
+                                            
                                         }
                                         .padding(.leading, 20)
                                         .padding(.trailing, 20)
@@ -138,7 +191,7 @@ struct ChatBoxView: View {
                                                 .imageScale(.large)
                                                 .fontWeight(.semibold)
                                         }
-
+                                        
                                     }
                             }
                             .frame(height: 50)
