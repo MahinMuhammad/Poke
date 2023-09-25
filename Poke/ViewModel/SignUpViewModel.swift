@@ -42,7 +42,7 @@ final class SignUpViewModel: ObservableObject{
         userDataManager.isUserNameUnique(for: userName.lowercased()) { unique in
             if let safeUnique = unique{
                 if safeUnique{
-                    self.authManager.signUpUser(name: self.name, userName: self.userName.lowercased(), email: self.email, password: self.password){ error in
+                    self.authManager.signUpUser(name: self.name, userName: self.userName.lowercased(), email: self.email.lowercased(), password: self.password){ error in
                         if let err = error{
                             let nsError = err as NSError
                             switch nsError.code{

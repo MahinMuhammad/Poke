@@ -23,6 +23,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 final class UserDataManager{
     static let shared = UserDataManager()

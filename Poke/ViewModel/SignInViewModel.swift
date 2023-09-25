@@ -35,7 +35,7 @@ final class SignInViewModel: ObservableObject{
     let authManager = AuthManager.shared
     
     func signInPressed(){
-        authManager.signInUser(email: email, password: password){error in
+        authManager.signInUser(email: email.lowercased(), password: password){error in
             if let err = error{
                 let nsError = err as NSError
                 switch nsError.code{
