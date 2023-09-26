@@ -35,7 +35,7 @@ struct FormElements{
         @State private var isPasswordVisible: Bool = false
         var body: some View {
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(Color(K.Colors.filedColor))
+                    .foregroundColor(Color(K.Colors.fieledColor))
                     .overlay{
                         ZStack{
                             RoundedRectangle(cornerRadius: 20)

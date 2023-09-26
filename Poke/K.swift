@@ -26,7 +26,7 @@ import Foundation
 struct K{
     struct Colors{
         static let canvasColor = "CanvasdColor"
-        static let filedColor = "FiledColor"
+        static let fieledColor = "FieledColor"
         static let fieldColorDark = "FieldColorDark"
         static let secondaryColor = "SecondaryColor"
         static let primaryColor = "PrimaryColor"

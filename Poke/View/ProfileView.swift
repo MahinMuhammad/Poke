@@ -26,14 +26,23 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject var d = Dummy()
     @Environment(\.dismiss) var dismiss
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     var body: some View {
         ZStack{
             Color(K.Colors.canvasColor)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                Button("back") {
-                    dismiss()
+                if verticalSizeClass == .compact{
+                    Button {
+                        dismiss()
+                    }label: {
+                        Image(systemName: "chevron.left")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .bold()
+                            .imageScale(.large)
+                            .foregroundStyle(Color(K.Colors.fontColor))
+                    }
                 }
                 AsyncImage(url: d.propic){  image in
                     image
@@ -54,6 +63,7 @@ struct ProfileView: View {
                             Circle().stroke(Color(red: 0.29, green: 0.29, blue: 0.29), lineWidth: 3.5)
                         )
                 }
+                .padding(.top, -20)
                 
                 Text("Mahin Rahman")
                     .font(Font.custom("Pacifico-Regular", size: 40))
@@ -67,7 +77,7 @@ struct ProfileView: View {
                 Divider()
                 RoundedRectangle(cornerRadius: 25)
                     .frame(height: 50)
-                    .foregroundColor(Color(K.Colors.filedColor))
+                    .foregroundColor(Color(K.Colors.fieledColor))
                     .overlay{
                         HStack{
                             Image(systemName: "envelope.fill")

@@ -93,7 +93,7 @@ struct ChatBoxView: View {
                 Spacer()
                 
                 RoundedRectangle(cornerRadius: 35)
-                    .foregroundColor(Color(K.Colors.filedColor))
+                    .foregroundColor(Color(K.Colors.fieledColor))
                     .padding(.bottom, -35)
                     .padding(.top, 5)
                     .overlay{
@@ -119,7 +119,7 @@ struct ChatBoxView: View {
                                     .padding(.leading, 50)
                                     .frame(maxWidth: .infinity, alignment: .trailing)
                                     .listRowSeparator(.hidden)
-                                    .listRowBackground(Color(K.Colors.filedColor))
+                                    .listRowBackground(Color(K.Colors.fieledColor))
                                 }else{
                                     VStack(alignment: .leading){
                                         Text(chat.content)
@@ -140,7 +140,7 @@ struct ChatBoxView: View {
                                     .padding(.trailing, 50)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .listRowSeparator(.hidden)
-                                    .listRowBackground(Color(K.Colors.filedColor))
+                                    .listRowBackground(Color(K.Colors.fieledColor))
                                 }
                             }
                             .listStyle(.plain)

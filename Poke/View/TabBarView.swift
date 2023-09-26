@@ -49,7 +49,7 @@ struct TabBarView: View {
                 Spacer() // to keep tabbar view at bottom always
                 
                 RoundedRectangle(cornerRadius: 50)
-                    .foregroundColor(Color(K.Colors.filedColor))
+                    .foregroundColor(Color(K.Colors.fieledColor))
                     .frame(height: 100)
                     .padding(.top,-30)
                     .padding(.bottom, -35)
