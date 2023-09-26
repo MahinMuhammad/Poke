@@ -24,10 +24,12 @@
 import SwiftUI
 
 struct ChatListView: View {
+    @EnvironmentObject var router: Router
     @StateObject var viewModel = ChatListViewModel()
     @StateObject var d = Dummy()
     @State var searchBarInput = ""
     var body: some View {
+        NavigationStack(path: $router.path){
         VStack {
             HStack {
                 Text("Messages")
@@ -130,6 +132,7 @@ struct ChatListView: View {
                 ChatBoxView(sending: chat.senderEmail, receiving: chat.receiverEmail)
             }
         }
+    }
     }
 }
 
