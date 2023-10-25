@@ -13,7 +13,7 @@
 <!-- limitations under the License.-->
 
 <h1>Poke</h1>
-  Poke is an iOS app built with SwiftUI that is a general purpose chatting application
+  Poke is an iOS app built with SwiftUI that is a secured chatting application for parents to kids.
 
 <h3>Graphical User Interface</h3>
   <table style="border:none">
