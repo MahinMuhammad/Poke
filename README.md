@@ -78,7 +78,7 @@
   This project is licensed under the Apache License 2.0 - see the LICENSE file for details.
 
 <h3>Contact</h3>
-  If you have any questions or comments about ChatGenie, feel free to reach out to me at rahmanmahin@icloud.com.
+  If you have any questions or comments about Poke, feel free to reach out to me at rahmanmahin@icloud.com.
 
 <hr>
 <table style="border:none">
