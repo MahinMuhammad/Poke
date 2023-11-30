@@ -71,7 +71,7 @@ struct ChatBoxView: View {
                     
                     Spacer()
                     
-                    AsyncImage(url: d.propic){  image in
+                    AsyncImage(url: Dummy.propic){  image in
                         image
                             .resizable()
                             .scaledToFill()

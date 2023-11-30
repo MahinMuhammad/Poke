@@ -26,7 +26,6 @@ import SwiftUI
 struct ChatListView: View {
     @EnvironmentObject var router: Router
     @StateObject var viewModel = ChatListViewModel()
-    @StateObject var d = Dummy()
     @State var searchBarInput = ""
     var body: some View {
         NavigationStack(path: $router.path){
@@ -70,7 +69,7 @@ struct ChatListView: View {
             List(viewModel.chatCollection){ chat in
                 NavigationLink(value: chat) {
                     HStack(alignment: .top){
-                        AsyncImage(url: d.propic){  image in
+                        AsyncImage(url: Dummy.propic){  image in
                             image
                                 .resizable()
                                 .scaledToFill()
@@ -90,7 +89,7 @@ struct ChatListView: View {
                             .frame(width: 20)
                         
                         VStack(alignment: .leading){
-                            Text(d.name)
+                            Text(Dummy.name)
                                 .fontWeight(.bold)
                                 .font(.system(size: 20))
                             
@@ -106,7 +105,7 @@ struct ChatListView: View {
                         Spacer()
                         
                         VStack{
-                            Text(d.time)
+                            Text(Dummy.time)
                                 .foregroundColor(Color.gray)
                                 .fontWeight(.thin)
                             
@@ -114,7 +113,7 @@ struct ChatListView: View {
                                 .foregroundColor(Color(K.Colors.primaryColor))
                                 .frame(width: 20, height: 20)
                                 .overlay{
-                                    Text(d.numOfMessages)
+                                    Text(Dummy.numOfMessages)
                                         .foregroundColor(Color.white)
                                         .fontWeight(.bold)
                                 }

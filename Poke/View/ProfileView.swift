@@ -24,7 +24,6 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject var d = Dummy()
     @Environment(\.dismiss) var dismiss
     @Environment(\.verticalSizeClass) var verticalSizeClass
     var body: some View {
@@ -44,7 +43,7 @@ struct ProfileView: View {
                             .foregroundStyle(Color(K.Colors.fontColor))
                     }
                 }
-                AsyncImage(url: d.propic){  image in
+                AsyncImage(url: Dummy.propic){  image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -65,7 +64,7 @@ struct ProfileView: View {
                 }
                 .padding(.top, -20)
                 
-                Text(d.name)
+                Text(Dummy.name)
                     .font(Font.custom("Pacifico-Regular", size: 40))
                     .bold()
                     .foregroundColor(Color(K.Colors.fontColor))
@@ -79,7 +78,7 @@ struct ProfileView: View {
                             Image(systemName: "envelope.fill")
                                 .imageScale(.large)
                                 .foregroundColor(Color(K.Colors.primaryColor))
-                            Text(d.email)
+                            Text(Dummy.email)
                                 .tint(Color(K.Colors.fontColor))
                         }
                     }

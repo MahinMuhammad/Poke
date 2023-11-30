@@ -25,7 +25,6 @@ import Foundation
 
 struct User{
     var name:String
-    var userName:String
-    var email:String
+    var uid:String
     var friends:[String]
 }

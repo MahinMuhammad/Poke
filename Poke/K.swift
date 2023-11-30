@@ -36,7 +36,6 @@ struct K{
     struct FStore{
         static let userCollectionName = "users"
         static let nameField = "name"
-        static let userNameField = "userName"
-        static let emailField = "email"
+        static let uidField = "uid"
     }
 }

@@ -52,10 +52,10 @@ final class UserDataManager{
 //        }
 //    }
     
-    func storeUserData(name:String, email:String, completion: @escaping(Error?)->Void){
+    func storeUserData(name:String, uid:String, completion: @escaping(Error?)->Void){
         db.collection(K.FStore.userCollectionName).addDocument(data: [
             K.FStore.nameField : name,
-            K.FStore.emailField : email
+            K.FStore.uidField : uid
         ]){ error in
             if let error{
                 print("Error adding user details: \(error)")

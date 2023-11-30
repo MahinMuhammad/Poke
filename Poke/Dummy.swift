@@ -24,15 +24,12 @@
 import Foundation
 
 class Dummy:ObservableObject{
-    @Published var propic:URL? = URL(string: "https://picsum.photos/200")
-    @Published var name:String = "Mahin Rahman"
-    @Published var userName = "mahin.5"
-    @Published var email = "rahmanmahin@icloud.com"
-    @Published var time:String = "5 min"
-    @Published var numOfMessages = "1"
-    
+    static let propic:URL? = URL(string: "https://picsum.photos/200")
+    static let name:String = "Mahin Rahman"
     static let email = "mahin@gmail.com"
     static let password = "123456"
+    static let time:String = "5 min"
+    static let numOfMessages = "1"
     static let chats = [
         Chat(id: UUID().uuidString, senderEmail: "sender1@example.com", receiverEmail: "receiver1@example.com", content: "Hello there!"),
         Chat(id: UUID().uuidString, senderEmail: "mahin@example.com", receiverEmail: "receiver2@example.com", content: "How's it going?"),

@@ -45,12 +45,14 @@ final class AuthManager: ObservableObject{
             }else{
                 print("User registration successfull!")
                 completion(nil)
-                UserDataManager.shared.storeUserData(name: name, email: email){error in
-                    if let error{
-                        completion(error)
-                    }else{
-                        DispatchQueue.main.async {
-                            self.isSignedIn = true
+                if let uid = Auth.auth().currentUser?.uid{
+                    UserDataManager.shared.storeUserData(name: name, uid: uid){error in
+                        if let error{
+                            completion(error)
+                        }else{
+                            DispatchQueue.main.async {
+                                self.isSignedIn = true
+                            }
                         }
                     }
                 }

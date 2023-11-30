@@ -27,7 +27,6 @@ struct SettingsView: View {
     @AppStorage("appTheme") var isDarkModeOn = false
     
     @StateObject var viewModel = SettingsViewModel()
-    @StateObject var d = Dummy()
     
     var body: some View {
         VStack{
@@ -41,7 +40,7 @@ struct SettingsView: View {
                 Button {
                     viewModel.showProfileView = true
                 } label: {
-                    AsyncImage(url: d.propic){  image in
+                    AsyncImage(url: Dummy.propic){  image in
                         image
                             .resizable()
                             .scaledToFill()
