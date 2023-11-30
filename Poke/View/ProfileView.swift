@@ -65,14 +65,10 @@ struct ProfileView: View {
                 }
                 .padding(.top, -20)
                 
-                Text("Mahin Rahman")
+                Text(d.name)
                     .font(Font.custom("Pacifico-Regular", size: 40))
                     .bold()
                     .foregroundColor(Color(K.Colors.fontColor))
-                
-                Text(d.userName)
-                    .foregroundColor(Color(K.Colors.fontColor))
-                    .font(.system(size: 25))
                 
                 Divider()
                 RoundedRectangle(cornerRadius: 25)
@@ -83,7 +79,7 @@ struct ProfileView: View {
                             Image(systemName: "envelope.fill")
                                 .imageScale(.large)
                                 .foregroundColor(Color(K.Colors.primaryColor))
-                            Text("rahmanmahin@icloud.com")
+                            Text(d.email)
                                 .tint(Color(K.Colors.fontColor))
                         }
                     }

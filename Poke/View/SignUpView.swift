@@ -36,8 +36,6 @@ struct SignUpView: View {
                     VStack{
                             FormElements.InputFieldView(input: $viewModel.name, titleShown: "Name", warningMessage: $viewModel.nameWarning, isSecuredOn: false)
                             
-                            FormElements.InputFieldView(input: $viewModel.userName, titleShown: "User Name", warningMessage: $viewModel.userNameWarning, isSecuredOn: false)
-                            
                             FormElements.InputFieldView(input: $viewModel.email, titleShown: "Email", warningMessage: $viewModel.emailWarning, isSecuredOn: false)
                             
                             FormElements.InputFieldView(input: $viewModel.password, titleShown: "Password", warningMessage: $viewModel.passwordWarning, isSecuredOn: true)

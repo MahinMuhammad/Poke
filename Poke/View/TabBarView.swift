@@ -34,8 +34,6 @@ struct TabBarView: View {
             Color(K.Colors.canvasColor)
                 .edgesIgnoringSafeArea(.all)
             
-            TapTargetResetLayer()
-            
             VStack{
                 switch viewModel.selectedTab{
                 case .chatList:
@@ -53,6 +51,7 @@ struct TabBarView: View {
                     .frame(height: 100)
                     .padding(.top,-30)
                     .padding(.bottom, -35)
+                    .ignoresSafeArea()
                     .overlay {
                         HStack{
                             Button {

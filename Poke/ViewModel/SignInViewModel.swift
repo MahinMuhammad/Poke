@@ -36,8 +36,8 @@ final class SignInViewModel: ObservableObject{
     
     func signInPressed(){
         authManager.signInUser(email: email.lowercased(), password: password){error in
-            if let err = error{
-                let nsError = err as NSError
+            if let error{
+                let nsError = error as NSError
                 switch nsError.code{
                 case AuthErrorCode.userNotFound.rawValue:
                     self.emailWarning = "user not found"
@@ -46,7 +46,8 @@ final class SignInViewModel: ObservableObject{
                 case AuthErrorCode.wrongPassword.rawValue:
                     self.passwordWarning = "wrong password"
                 default:
-                    print("Failed to sign up with error: \(err)")
+                    self.passwordWarning = "Failed to sign in!"
+                    print("Failed to sign in with error: \(error)")
                 }
             }
         }

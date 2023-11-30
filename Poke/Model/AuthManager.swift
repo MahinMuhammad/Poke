@@ -37,16 +37,22 @@ final class AuthManager: ObservableObject{
         }
     }
     
-    func signUpUser(name:String, userName:String, email:String, password:String, completion: @escaping (Error?) -> Void){
+    func signUpUser(name:String, email:String, password:String, completion: @escaping (Error?) -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { [self] authResult, error in
             if let e = error{
                 let err = e as NSError
                 completion(err)
             }else{
                 print("User registration successfull!")
-                DispatchQueue.main.async {
-                    UserDataManager.shared.storeUserData(name: name, userName: userName, email: email)
-                    self.isSignedIn = true
+                completion(nil)
+                UserDataManager.shared.storeUserData(name: name, email: email){error in
+                    if let error{
+                        completion(error)
+                    }else{
+                        DispatchQueue.main.async {
+                            self.isSignedIn = true
+                        }
+                    }
                 }
             }
         }
@@ -54,11 +60,12 @@ final class AuthManager: ObservableObject{
     
     func signInUser(email:String, password:String, completion: @escaping (Error?) -> Void){
         Auth.auth().signIn(withEmail: email, password: password){ response, error in
-            if let e = error{
-                let err = e as NSError
-                completion(err)
+            if let error{
+                let nsError = error as NSError
+                completion(nsError)
             }else{
                 print("User signIn successfull!")
+                completion(nil)
                 DispatchQueue.main.async{
                     self.isSignedIn = true
                 }

@@ -31,25 +31,6 @@ final class UserDataManager{
     
     @Published var user:User?
     
-    func isUserNameUnique(for userName:String, completion: @escaping (Bool?) -> Void){
-        let firestoreCollection = db.collection(K.FStore.userCollectionName)
-        let collection = firestoreCollection.whereField(K.FStore.userNameField, isEqualTo: userName)
-        collection.getDocuments { snapshot, error in
-            if let e = error{
-                print("Failed to retrive userName when checking for uniqueness \(e)")
-            }else{
-                if let snapshotDocuments = snapshot?.documents{
-                    if snapshotDocuments.count == 0{
-                        completion(true)
-                    }else{
-                        completion(false)
-                    }
-                }
-            }
-        }
-    }
-    
-    
 //    func readUserData(){
 //        self.user = nil
 //        let firestoreCollection = db.collection(K.FStore.userCollectionName)
@@ -71,16 +52,17 @@ final class UserDataManager{
 //        }
 //    }
     
-    func storeUserData(name:String, userName:String, email:String){
+    func storeUserData(name:String, email:String, completion: @escaping(Error?)->Void){
         db.collection(K.FStore.userCollectionName).addDocument(data: [
             K.FStore.nameField : name,
-            K.FStore.userNameField : userName,
             K.FStore.emailField : email
         ]){ error in
-            if let e = error{
-                print("Error adding user details: \(e)")
+            if let error{
+                print("Error adding user details: \(error)")
+                completion(error)
             }else{
                 print("User details successfully added")
+                completion(nil)
             }
         }
     }
