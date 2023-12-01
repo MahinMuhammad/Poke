@@ -31,30 +31,37 @@ final class UserDataManager{
     
     @Published var user:User?
     
-//    func readUserData(){
-//        self.user = nil
-//        let firestoreCollection = db.collection(K.FStore.userCollectionName)
-//
-//        if let currentUserEmail = Auth.auth().currentUser?.email{
-//            let userDataCollection = firestoreCollection.whereField(K.FStore.emailField, isEqualTo: currentUserEmail)
-//            userDataCollection.getDocuments { querySnapshot, error in
-//                if let e = error{
-//                    print("Failed to retrive user data: \(e)")
-//                }else{
-//                    if let snapshotDocuments = querySnapshot?.documents{
-//                        let data = snapshotDocuments[0].data()
-//                        if let firstName = data[K.FStore.firstNameField] as? String, let lastName = data[K.FStore.lastNameField] as? String, let email = data[K.FStore.emailField] as? String{
-//                            self.userData = UserData(firstName: firstName, lastname: lastName, email: email)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func readUserData(completion: @escaping (User?)->Void){
+        let firestoreCollection = db.collection(K.FStore.userCollectionName)
+
+        if let currentUser = Auth.auth().currentUser{
+            let userDataCollection = firestoreCollection.whereField(K.FStore.uidField, isEqualTo: currentUser.uid)
+            userDataCollection.getDocuments { querySnapshot, error in
+                if let error{
+                    print("Failed to retrive user data: \(error)")
+                    completion(nil)
+                }else{
+                    if let snapshotDocuments = querySnapshot?.documents{
+                        let data = snapshotDocuments[0].data()
+                        if let name = data[K.FStore.nameField] as? String, let uid = data[K.FStore.uidField] as? String{
+                            guard let email = currentUser.email else{fatalError("failed to recieve email of current user while reading User data")}
+                            let profilePicture = data[K.FStore.prfilePictureUrlField] as? String
+                            let user = User(name: name, uid: uid, email: email, profilePicture: profilePicture)
+                            completion(user)
+                        }
+                    }
+                }
+            }
+        }
+        else{
+            fatalError("No current user found while reading User Data")
+        }
+    }
     
-    func storeUserData(name:String, uid:String, completion: @escaping(Error?)->Void){
+    func storeUserData(name:String, profilePictureUrl:String?, uid:String, completion: @escaping(Error?)->Void){
         db.collection(K.FStore.userCollectionName).addDocument(data: [
             K.FStore.nameField : name,
+            K.FStore.prfilePictureUrlField : profilePictureUrl as Any,
             K.FStore.uidField : uid
         ]){ error in
             if let error{

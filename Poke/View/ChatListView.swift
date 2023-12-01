@@ -77,7 +77,7 @@ struct ChatListView: View {
                                 .clipped()
                                 .clipShape(Circle())
                         }placeholder: {
-                            Image(systemName: "photo")
+                            Image(systemName: "person.circle.fill")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 60, height: 60)

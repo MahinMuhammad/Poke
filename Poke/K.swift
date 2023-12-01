@@ -37,5 +37,6 @@ struct K{
         static let userCollectionName = "users"
         static let nameField = "name"
         static let uidField = "uid"
+        static let prfilePictureUrlField = "prfilePictureUrl"
     }
 }

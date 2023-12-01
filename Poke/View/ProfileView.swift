@@ -26,6 +26,7 @@ import SwiftUI
 struct ProfileView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.verticalSizeClass) var verticalSizeClass
+    @StateObject var viewModel = ProfileViewModel()
     var body: some View {
         ZStack{
             Color(K.Colors.canvasColor)
@@ -43,7 +44,7 @@ struct ProfileView: View {
                             .foregroundStyle(Color(K.Colors.fontColor))
                     }
                 }
-                AsyncImage(url: Dummy.propic){  image in
+                AsyncImage(url: URL(string: viewModel.user?.profilePicture ?? "")){  image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -53,7 +54,7 @@ struct ProfileView: View {
                             Circle().stroke(Color(K.Colors.secondaryColor), lineWidth: 3.5)
                         )
                 }placeholder: {
-                    Image(systemName: "photo")
+                    Image(systemName: "person.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 150)
@@ -64,7 +65,7 @@ struct ProfileView: View {
                 }
                 .padding(.top, -20)
                 
-                Text(Dummy.name)
+                Text(viewModel.user?.name ?? "Loading Failed")
                     .font(Font.custom("Pacifico-Regular", size: 40))
                     .bold()
                     .foregroundColor(Color(K.Colors.fontColor))
@@ -78,12 +79,23 @@ struct ProfileView: View {
                             Image(systemName: "envelope.fill")
                                 .imageScale(.large)
                                 .foregroundColor(Color(K.Colors.primaryColor))
-                            Text(Dummy.email)
+                            Text(viewModel.user?.email ?? "Loading Failed")
                                 .tint(Color(K.Colors.fontColor))
                         }
                     }
+                
             }
             .padding()
+            
+            if !viewModel.userLoaded(){
+                Color(K.Colors.canvasColor)
+                    .edgesIgnoringSafeArea(.all)
+                Text("Loading..")
+                    .font(.largeTitle)
+            }
+        }
+        .onAppear{
+            viewModel.loadUser()
         }
     }
 }

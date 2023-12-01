@@ -37,7 +37,7 @@ final class AuthManager: ObservableObject{
         }
     }
     
-    func signUpUser(name:String, email:String, password:String, completion: @escaping (Error?) -> Void){
+    func signUpUser(name:String, profilePictureUrl:String?, email:String, password:String, completion: @escaping (Error?) -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { [self] authResult, error in
             if let e = error{
                 let err = e as NSError
@@ -46,7 +46,7 @@ final class AuthManager: ObservableObject{
                 print("User registration successfull!")
                 completion(nil)
                 if let uid = Auth.auth().currentUser?.uid{
-                    UserDataManager.shared.storeUserData(name: name, uid: uid){error in
+                    UserDataManager.shared.storeUserData(name: name, profilePictureUrl: profilePictureUrl, uid: uid){error in
                         if let error{
                             completion(error)
                         }else{

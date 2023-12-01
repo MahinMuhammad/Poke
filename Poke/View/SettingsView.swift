@@ -48,13 +48,13 @@ struct SettingsView: View {
                             .clipped()
                             .clipShape(Circle())
                     }placeholder: {
-                        Image(systemName: "photo")
+                        Image(systemName: "person.circle.fill")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 40, height: 40)
                             .clipped()
                             .clipShape(Circle())
-                            .tint(.black)
+                            .tint(Color(UIColor.label))
                     }
                 }
             }
@@ -170,7 +170,7 @@ struct SettingsView: View {
                     .foregroundColor(Color(K.Colors.fieledColor))
                     .overlay{
                         Button{
-                            AuthManager.shared.signOut()
+                            viewModel.logoutPressed()
                         }label: {
                             Text("Log Out")
                                 .fontWeight(.medium)

@@ -29,4 +29,8 @@ final class SettingsViewModel:ObservableObject{
     @Published var isNotificationOn = false
     @Published var showRemoveAllNewsAlert = false
     @Published var showProfileView = false
+    
+    func logoutPressed(){
+        AuthManager.shared.signOut()
+    }
 }

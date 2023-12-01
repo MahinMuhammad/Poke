@@ -37,7 +37,7 @@ final class SignUpViewModel: ObservableObject{
     let authManager = AuthManager.shared
     
     func signUpPressed(){
-        self.authManager.signUpUser(name: self.name, email: self.email.lowercased(), password: self.password){ error in
+        self.authManager.signUpUser(name: self.name, profilePictureUrl: nil, email: self.email.lowercased(), password: self.password){ error in
             if let error{
                 let nsError = error as NSError
                 switch nsError.code{

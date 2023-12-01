@@ -39,7 +39,7 @@ struct TabBarView: View {
                 case .chatList:
                     ChatListView()
                 case .friendList:
-                    FriendListView()
+                    ContactListView()
                 case .settings:
                     SettingsView()
                 }

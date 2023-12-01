@@ -23,14 +23,14 @@
 
 import SwiftUI
 
-struct FriendListView: View {
+struct ContactListView: View {
     var body: some View {
-        Text("FriendList")
+        Text("Contact List")
     }
 }
 
-struct FriendListView_Previews: PreviewProvider {
+struct ContactListView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendListView()
+        ContactListView()
     }
 }

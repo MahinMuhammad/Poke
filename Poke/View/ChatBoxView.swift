@@ -79,7 +79,7 @@ struct ChatBoxView: View {
                             .clipped()
                             .clipShape(Circle())
                     }placeholder: {
-                        Image(systemName: "photo")
+                        Image(systemName: "person.circle.fill")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 50, height: 60)

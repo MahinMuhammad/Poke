@@ -26,5 +26,6 @@ import Foundation
 struct User{
     var name:String
     var uid:String
-    var friends:[String]
+    var email:String
+    var profilePicture:String?
 }
