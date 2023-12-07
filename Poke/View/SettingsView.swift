@@ -27,6 +27,7 @@ struct SettingsView: View {
     @AppStorage("appTheme") var isDarkModeOn = false
     
     @StateObject var viewModel = SettingsViewModel()
+    @StateObject var profileViewModel: ProfileViewModel
     
     var body: some View {
         VStack{
@@ -191,12 +192,14 @@ struct SettingsView: View {
             }
         }
         .background(Color(K.Colors.canvasColor))
-        .sheet(isPresented: $viewModel.showProfileView, content: ProfileView.init)
+        .sheet(isPresented: $viewModel.showProfileView) {
+            ProfileView(viewModel: profileViewModel)
+        }
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(profileViewModel: ProfileViewModel())
     }
 }

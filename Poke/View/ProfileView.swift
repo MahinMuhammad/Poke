@@ -26,7 +26,7 @@ import SwiftUI
 struct ProfileView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.verticalSizeClass) var verticalSizeClass
-    @StateObject var viewModel = ProfileViewModel()
+    @StateObject var viewModel: ProfileViewModel
     var body: some View {
         ZStack{
             Color(K.Colors.canvasColor)
@@ -94,14 +94,11 @@ struct ProfileView: View {
                     .font(.largeTitle)
             }
         }
-        .onAppear{
-            viewModel.loadUser()
-        }
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(viewModel: ProfileViewModel())
     }
 }

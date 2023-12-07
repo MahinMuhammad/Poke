@@ -33,6 +33,7 @@ final class ProfileViewModel:ObservableObject{
         UserDataManager.shared.readUserData(){ user in
             self.user = user
             self.loadingFinished = true
+            print("User data fetched!")
         }
     }
     

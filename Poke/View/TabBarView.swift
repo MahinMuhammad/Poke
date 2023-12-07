@@ -27,6 +27,7 @@ struct TabBarView: View {
     
     @StateObject var authManager = AuthManager.shared
     @StateObject var viewModel = TabBarViewModel()
+    @StateObject var profileViewModel = ProfileViewModel()
     
     var body: some View {
         
@@ -41,7 +42,7 @@ struct TabBarView: View {
                 case .friendList:
                     ContactListView()
                 case .settings:
-                    SettingsView()
+                    SettingsView(profileViewModel: profileViewModel)
                 }
                 
                 Spacer() // to keep tabbar view at bottom always
@@ -90,6 +91,9 @@ struct TabBarView: View {
         }
         .onAppear{
             viewModel.selectedTab = .chatList
+            if authManager.isSignedIn{
+                profileViewModel.loadUser()
+            }
         }
     }
 }
