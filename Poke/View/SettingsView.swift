@@ -41,7 +41,7 @@ struct SettingsView: View {
                 Button {
                     viewModel.showProfileView = true
                 } label: {
-                    AsyncImage(url: Dummy.propic){  image in
+                    AsyncImage(url: profileViewModel.user?.profilePictureUrl){  image in
                         image
                             .resizable()
                             .scaledToFill()

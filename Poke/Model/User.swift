@@ -24,8 +24,11 @@
 import Foundation
 
 struct User{
-    var name:String
-    var uid:String
-    var email:String
-    var profilePicture:String?
+    let name:String
+    let uid:String
+    let email:String
+    let profilePicture:String?
+    var profilePictureUrl: URL?{
+        return URL(string: profilePicture ?? "")
+    }
 }

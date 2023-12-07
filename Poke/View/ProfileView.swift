@@ -44,7 +44,7 @@ struct ProfileView: View {
                             .foregroundStyle(Color(K.Colors.fontColor))
                     }
                 }
-                AsyncImage(url: URL(string: viewModel.user?.profilePicture ?? "")){  image in
+                AsyncImage(url: viewModel.user?.profilePictureUrl){  image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
