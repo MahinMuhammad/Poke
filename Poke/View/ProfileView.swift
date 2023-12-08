@@ -22,6 +22,7 @@
  */
 
 import SwiftUI
+import PhotosUI
 
 struct ProfileView: View {
     @Environment(\.dismiss) var dismiss
@@ -64,6 +65,9 @@ struct ProfileView: View {
                         )
                 }
                 .padding(.top, -20)
+                .onTapGesture {
+                    viewModel.shouldPresentPhotoPicker = true
+                }
                 
                 Text(viewModel.user?.name ?? "Loading Failed")
                     .font(Font.custom("Pacifico-Regular", size: 40))
@@ -92,6 +96,12 @@ struct ProfileView: View {
                     .edgesIgnoringSafeArea(.all)
                 Text("Loading..")
                     .font(.largeTitle)
+            }
+        }
+        .photosPicker(isPresented: $viewModel.shouldPresentPhotoPicker, selection: $viewModel.selectedPickerItem, matching: .images)
+        .onChange(of: viewModel.selectedPickerItem) { newItem in
+            if let newItem{
+                viewModel.selectedPickerItemChanged(to: newItem)
             }
         }
     }

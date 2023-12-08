@@ -38,5 +38,10 @@ struct K{
         static let nameField = "name"
         static let uidField = "uid"
         static let prfilePictureUrlField = "prfilePictureUrl"
+        
+        //for cloud storage
+        static func getProfilePictureCloudPath(of uid:String)->String{
+            return "profilePictures/\(uid).jpg"
+        }
     }
 }

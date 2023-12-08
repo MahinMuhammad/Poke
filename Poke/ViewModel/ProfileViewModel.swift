@@ -22,10 +22,13 @@
  */
 
 import Foundation
+import _PhotosUI_SwiftUI
 
 final class ProfileViewModel:ObservableObject{
     @Published var user:User?
     @Published var loadingFinished = false
+    @Published var shouldPresentPhotoPicker = false
+    @Published var selectedPickerItem: PhotosPickerItem?
     
     func loadUser(){
         user = nil
@@ -39,5 +42,23 @@ final class ProfileViewModel:ObservableObject{
     
     func userLoaded()->Bool{
         return user != nil || loadingFinished
+    }
+    
+    func selectedPickerItemChanged(to newItem:PhotosPickerItem){
+        Task{
+            do{
+                if let data = try await newItem.loadTransferable(type: Data.self),
+                   let uiImage = UIImage(data: data){
+                    return
+                }
+                
+            }catch{
+                print("Failed to retrive data from Picker Image with error: \(error)")
+            }
+        }
+    }
+    
+    func updateProfilePicture(){
+        
     }
 }

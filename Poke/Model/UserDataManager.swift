@@ -24,45 +24,44 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 
 final class UserDataManager{
     static let shared = UserDataManager()
     let db = Firestore.firestore()
+    let storage = Storage.storage()
     
     @Published var user:User?
     
     func readUserData(completion: @escaping (User?)->Void){
-        let firestoreCollection = db.collection(K.FStore.userCollectionName)
-
-        if let currentUser = Auth.auth().currentUser{
-            let userDataCollection = firestoreCollection.whereField(K.FStore.uidField, isEqualTo: currentUser.uid)
-            userDataCollection.getDocuments { querySnapshot, error in
-                if let error{
-                    print("Failed to retrive user data: \(error)")
-                    completion(nil)
-                }else{
-                    if let snapshotDocuments = querySnapshot?.documents{
-                        let data = snapshotDocuments[0].data()
-                        if let name = data[K.FStore.nameField] as? String, let uid = data[K.FStore.uidField] as? String{
-                            guard let email = currentUser.email else{fatalError("failed to recieve email of current user while reading User data")}
-                            let profilePicture = data[K.FStore.prfilePictureUrlField] as? String
-                            let user = User(name: name, uid: uid, email: email, profilePicture: profilePicture)
-                            completion(user)
-                        }
-                    }
-                }
+        guard let currentUser = Auth.auth().currentUser
+        else{fatalError("No current user id found while reading User Data")}
+        
+        let docRef = db.collection(K.FStore.userCollectionName).document(currentUser.uid)
+        
+        docRef.getDocument { (document, error) in
+            if let error{
+                print("Failed to retrive user data: \(error)")
+                completion(nil)
+            }else{
+                guard let document, let data = document.data()
+                else {fatalError("No data or document found for current user while readind User data")}
+                
+                guard let email = currentUser.email
+                else{fatalError("failed to recieve email of current user while reading User data")}
+                let uid = currentUser.uid
+                let name = data[K.FStore.nameField] as? String ?? "Unknown"
+                let profilePicture = data[K.FStore.prfilePictureUrlField] as? String
+                let user = User(name: name, uid: uid, email: email, profilePicture: profilePicture)
+                completion(user)
             }
-        }
-        else{
-            fatalError("No current user found while reading User Data")
         }
     }
     
     func storeUserData(name:String, profilePictureUrl:String?, uid:String, completion: @escaping(Error?)->Void){
-        db.collection(K.FStore.userCollectionName).addDocument(data: [
+        db.collection(K.FStore.userCollectionName).document(uid).setData([
             K.FStore.nameField : name,
-            K.FStore.prfilePictureUrlField : profilePictureUrl as Any,
-            K.FStore.uidField : uid
+            K.FStore.prfilePictureUrlField : profilePictureUrl as Any
         ]){ error in
             if let error{
                 print("Error adding user details: \(error)")
@@ -70,6 +69,26 @@ final class UserDataManager{
             }else{
                 print("User details successfully added")
                 completion(nil)
+            }
+        }
+    }
+    
+    func updateUserData(){
+        
+    }
+    
+    func storeProfilePicture(of uid:String, with data:Data, completion: @escaping (URL?, Error?)->Void){
+        let storageRef = storage.reference()
+        let profilePictureRef = storageRef.child(K.FStore.getProfilePictureCloudPath(of: uid))
+        
+        let uploadTask = profilePictureRef.putData(data){ metadata, error in
+            if let error{
+                completion(nil, error)
+            }else{
+                profilePictureRef.downloadURL(){ url, error in
+                    guard let url else{completion(nil, error); return}
+                    completion(url, nil)
+                }
             }
         }
     }

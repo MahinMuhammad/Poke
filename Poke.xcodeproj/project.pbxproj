@@ -38,6 +38,7 @@
 		0099AA9B2A8A8CC700803446 /* ChatBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099AA9A2A8A8CC700803446 /* ChatBoxViewModel.swift */; };
 		009EA28D2B18F3CE00FE1D0B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009EA28C2B18F3CE00FE1D0B /* ProfileViewModel.swift */; };
 		009F37AA2AA78008009FAFF6 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009F37A92AA78008009FAFF6 /* TabBarViewModel.swift */; };
+		00C888902B222DA400AF6941 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 00C8888F2B222DA400AF6941 /* FirebaseStorage */; };
 		00CE95242A8936F400C253D8 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE95232A8936F400C253D8 /* ChatListViewModel.swift */; };
 		00E2B2692AA8568C0043FF9F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2B2682AA8568C0043FF9F /* SettingsViewModel.swift */; };
 		00E50AAC2AA8AC270044BEEC /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E50AAB2AA8AC270044BEEC /* DeviceRotationViewModifier.swift */; };
@@ -84,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0066D6682A867B8200685C71 /* FirebaseAuth in Frameworks */,
+				00C888902B222DA400AF6941 /* FirebaseStorage in Frameworks */,
 				0066D66A2A867B8200685C71 /* FirebaseFirestore in Frameworks */,
 				0066D66C2A867B8200685C71 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -97,6 +99,7 @@
 			children = (
 				0066D63A2A8526DF00685C71 /* Poke */,
 				0066D6392A8526DF00685C71 /* Products */,
+				00C8888E2B222DA400AF6941 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +197,13 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		00C8888E2B222DA400AF6941 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,6 +224,7 @@
 				0066D6672A867B8200685C71 /* FirebaseAuth */,
 				0066D6692A867B8200685C71 /* FirebaseFirestore */,
 				0066D66B2A867B8200685C71 /* FirebaseFirestoreSwift */,
+				00C8888F2B222DA400AF6941 /* FirebaseStorage */,
 			);
 			productName = Poke;
 			productReference = 0066D6382A8526DF00685C71 /* Poke.app */;
@@ -528,6 +539,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0066D6662A867B8200685C71 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		00C8888F2B222DA400AF6941 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0066D6662A867B8200685C71 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
