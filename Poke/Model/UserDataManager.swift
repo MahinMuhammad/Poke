@@ -30,9 +30,9 @@ final class UserDataManager{
     static let shared = UserDataManager()
     let db = Firestore.firestore()
     let storage = Storage.storage()
-    
     @Published var user:User?
     
+    //MARK: - CRUD
     func readUserData(completion: @escaping (User?)->Void){
         guard let currentUser = Auth.auth().currentUser
         else{fatalError("No current user id found while reading User Data")}
@@ -73,10 +73,32 @@ final class UserDataManager{
         }
     }
     
-    func updateUserData(){
-        
+    func updateUserData(of user:User, completion: @escaping(Error?)->Void){
+        db.collection(K.FStore.userCollectionName).document(user.uid).setData([
+            K.FStore.nameField : user.name,
+            K.FStore.prfilePictureUrlField : user.profilePicture as Any
+        ], merge: true){ error in
+            if let error{
+                print("Error updating user details: \(error)")
+                completion(error)
+            }else{
+                print("User details successfully added")
+                completion(nil)
+            }
+        }
     }
     
+    func deleteUserData(of uid:String){
+        db.collection(K.FStore.userCollectionName).document(uid).delete(){ error in
+            if let error{
+                print("Failed to delete user document with error: \(error)")
+            }else{
+                print("User document deleted!")
+            }
+        }
+    }
+    
+    //MARK: - Cloud storage to store image
     func storeProfilePicture(of uid:String, with data:Data, completion: @escaping (URL?, Error?)->Void){
         let storageRef = storage.reference()
         let profilePictureRef = storageRef.child(K.FStore.getProfilePictureCloudPath(of: uid))
