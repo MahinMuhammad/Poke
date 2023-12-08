@@ -45,28 +45,34 @@ struct ProfileView: View {
                             .foregroundStyle(Color(K.Colors.fontColor))
                     }
                 }
-                AsyncImage(url: viewModel.user?.profilePictureUrl){  image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 150)
-                        .clipShape(Circle())
-                        .overlay(
-                            Circle().stroke(Color(K.Colors.secondaryColor), lineWidth: 3.5)
-                        )
-                }placeholder: {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 150)
-                        .clipShape(Circle())
-                        .overlay(
-                            Circle().stroke(Color(red: 0.29, green: 0.29, blue: 0.29), lineWidth: 3.5)
-                        )
-                }
-                .padding(.top, -20)
-                .onTapGesture {
-                    viewModel.shouldPresentPhotoPicker = true
+                Menu{
+                    Button {
+                        viewModel.shouldPresentPhotoPicker = true
+                    } label: {
+                        Text("Update Profile Picture")
+                    }
+                } label: {
+                    AsyncImage(url: viewModel.user?.profilePictureUrl){  image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 150, height: 150)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle().stroke(Color(K.Colors.secondaryColor), lineWidth: 3.5)
+                            )
+                    }placeholder: {
+                        Image(systemName: "person.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 150)
+                            .clipShape(Circle())
+                            .tint(Color(UIColor.label))
+                            .overlay(
+                                Circle().stroke(Color(K.Colors.secondaryColor), lineWidth: 3.5)
+                            )
+                    }
+                    .padding(.top, -20)
                 }
                 
                 Text(viewModel.user?.name ?? "Loading Failed")

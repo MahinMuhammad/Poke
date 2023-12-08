@@ -41,7 +41,11 @@ final class ProfileViewModel:ObservableObject{
     }
     
     func userLoaded()->Bool{
-        return user != nil || loadingFinished
+        return user != nil && loadingFinished
+    }
+    
+    func failedToLoadUser()->Bool{
+        return user == nil && loadingFinished
     }
     
     func selectedPickerItemChanged(to newItem:PhotosPickerItem){
@@ -59,6 +63,9 @@ final class ProfileViewModel:ObservableObject{
     }
     
     func updateProfilePicture(with data:Data){
+        DispatchQueue.main.async {
+            self.loadingFinished = false
+        }
         guard let user else {fatalError("user not found while updating profile picture")}
         UserDataManager.shared.storeProfilePicture(of: user.uid, with: data) { profilePictureAddress, error in
             if let error{
@@ -69,6 +76,7 @@ final class ProfileViewModel:ObservableObject{
                     if error == nil{
                         print("Profile picture updated!")
                         self.user = updatedUser
+                        self.loadingFinished = true
                     }
                 }
             }
