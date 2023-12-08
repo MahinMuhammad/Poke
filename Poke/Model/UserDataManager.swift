@@ -82,7 +82,7 @@ final class UserDataManager{
                 print("Error updating user details: \(error)")
                 completion(error)
             }else{
-                print("User details successfully added")
+                print("User details successfully updated")
                 completion(nil)
             }
         }
@@ -99,7 +99,7 @@ final class UserDataManager{
     }
     
     //MARK: - Cloud storage to store image
-    func storeProfilePicture(of uid:String, with data:Data, completion: @escaping (URL?, Error?)->Void){
+    func storeProfilePicture(of uid:String, with data:Data, completion: @escaping (String?, Error?)->Void){
         let storageRef = storage.reference()
         let profilePictureRef = storageRef.child(K.FStore.getProfilePictureCloudPath(of: uid))
         
@@ -109,7 +109,7 @@ final class UserDataManager{
             }else{
                 profilePictureRef.downloadURL(){ url, error in
                     guard let url else{completion(nil, error); return}
-                    completion(url, nil)
+                    completion(url.absoluteString, nil)
                 }
             }
         }

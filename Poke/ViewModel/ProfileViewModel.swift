@@ -47,8 +47,8 @@ final class ProfileViewModel:ObservableObject{
     func selectedPickerItemChanged(to newItem:PhotosPickerItem){
         Task{
             do{
-                if let data = try await newItem.loadTransferable(type: Data.self),
-                   let uiImage = UIImage(data: data){
+                if let data = try await newItem.loadTransferable(type: Data.self){
+                    updateProfilePicture(with: data)
                     return
                 }
                 
@@ -58,7 +58,20 @@ final class ProfileViewModel:ObservableObject{
         }
     }
     
-    func updateProfilePicture(){
-        
+    func updateProfilePicture(with data:Data){
+        guard let user else {fatalError("user not found while updating profile picture")}
+        UserDataManager.shared.storeProfilePicture(of: user.uid, with: data) { profilePictureAddress, error in
+            if let error{
+                print("Failed to upload profile picture with error: \(error)")
+            }else if let profilePictureAddress{
+                let updatedUser = User(name: user.name, uid: user.uid, email: user.email, profilePicture: profilePictureAddress)
+                UserDataManager.shared.updateUserData(of: updatedUser) { error in
+                    if error == nil{
+                        print("Profile picture updated!")
+                        self.user = updatedUser
+                    }
+                }
+            }
+        }
     }
 }
