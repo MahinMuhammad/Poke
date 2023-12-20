@@ -42,6 +42,8 @@
 		00CE95242A8936F400C253D8 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE95232A8936F400C253D8 /* ChatListViewModel.swift */; };
 		00E2B2692AA8568C0043FF9F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2B2682AA8568C0043FF9F /* SettingsViewModel.swift */; };
 		00E50AAC2AA8AC270044BEEC /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E50AAB2AA8AC270044BEEC /* DeviceRotationViewModifier.swift */; };
+		00EBC3CB2B33336800C228C9 /* PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBC3CA2B33336800C228C9 /* PictureView.swift */; };
+		00EBC3CD2B33338E00C228C9 /* PictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBC3CC2B33338E00C228C9 /* PictureViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		00CE95232A8936F400C253D8 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 		00E2B2682AA8568C0043FF9F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		00E50AAB2AA8AC270044BEEC /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
+		00EBC3CA2B33336800C228C9 /* PictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureView.swift; sourceTree = "<group>"; };
+		00EBC3CC2B33338E00C228C9 /* PictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 				0099AA9A2A8A8CC700803446 /* ChatBoxViewModel.swift */,
 				00E2B2682AA8568C0043FF9F /* SettingsViewModel.swift */,
 				009EA28C2B18F3CE00FE1D0B /* ProfileViewModel.swift */,
+				00EBC3CC2B33338E00C228C9 /* PictureViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				0066D67C2A8688DC00685C71 /* ContactListView.swift */,
 				0066D6782A8686D900685C71 /* SettingsView.swift */,
 				0059BBA02AA87CA700B52D55 /* ProfileView.swift */,
+				00EBC3CA2B33336800C228C9 /* PictureView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,10 +301,12 @@
 				0066D6862A869DD600685C71 /* ChatDataManager.swift in Sources */,
 				0066D6602A86672D00685C71 /* ViewFactory.swift in Sources */,
 				0099AA972A8A690E00803446 /* Dummy.swift in Sources */,
+				00EBC3CD2B33338E00C228C9 /* PictureViewModel.swift in Sources */,
 				00E2B2692AA8568C0043FF9F /* SettingsViewModel.swift in Sources */,
 				0066D6842A869C7400685C71 /* User.swift in Sources */,
 				0066D6802A868E9200685C71 /* FormElements.swift in Sources */,
 				0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */,
+				00EBC3CB2B33336800C228C9 /* PictureView.swift in Sources */,
 				0059BBA12AA87CA700B52D55 /* ProfileView.swift in Sources */,
 				0066D6792A8686D900685C71 /* SettingsView.swift in Sources */,
 				0066D6512A85541900685C71 /* SignUpViewModel.swift in Sources */,

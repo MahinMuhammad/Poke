@@ -103,7 +103,7 @@ final class UserDataManager{
         let storageRef = storage.reference()
         let profilePictureRef = storageRef.child(K.FStore.getProfilePictureCloudPath(of: uid))
         
-        let uploadTask = profilePictureRef.putData(data){ metadata, error in
+        profilePictureRef.putData(data){ metadata, error in
             if let error{
                 completion(nil, error)
             }else{

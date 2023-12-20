@@ -23,12 +23,14 @@
 
 import Foundation
 import _PhotosUI_SwiftUI
+import SwiftUI
 
 final class ProfileViewModel:ObservableObject{
     @Published var user:User?
     @Published var loadingFinished = false
     @Published var shouldPresentPhotoPicker = false
     @Published var selectedPickerItem: PhotosPickerItem?
+    @Published var shouldPresentFullPicture = false
     
     func loadUser(){
         user = nil

@@ -47,9 +47,14 @@ struct ProfileView: View {
                 }
                 Menu{
                     Button {
+                        viewModel.shouldPresentFullPicture = true
+                    } label: {
+                        Text("View Picture")
+                    }
+                    Button {
                         viewModel.shouldPresentPhotoPicker = true
                     } label: {
-                        Text("Update Profile Picture")
+                        Text("Update Picture")
                     }
                 } label: {
                     AsyncImage(url: viewModel.user?.profilePictureUrl){  image in
@@ -103,6 +108,9 @@ struct ProfileView: View {
                 Text("Loading..")
                     .font(.largeTitle)
             }
+        }
+        .sheet(isPresented: $viewModel.shouldPresentFullPicture){
+            PictureView(viewModel: PictureViewModel(imageUrl: viewModel.user?.profilePictureUrl))
         }
         .photosPicker(isPresented: $viewModel.shouldPresentPhotoPicker, selection: $viewModel.selectedPickerItem, matching: .images)
         .onChange(of: viewModel.selectedPickerItem) { newItem in
