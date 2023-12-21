@@ -25,7 +25,6 @@ import SwiftUI
 
 struct ChatBoxView: View {
     @EnvironmentObject var router: Router
-    @StateObject var d = Dummy()
     @ObservedObject var viewModel: ChatBoxViewModel
     @Environment(\.colorScheme) var colorScheme //for smilling face
     
@@ -93,7 +92,7 @@ struct ChatBoxView: View {
                 Spacer()
                 
                 RoundedRectangle(cornerRadius: 35)
-                    .foregroundColor(Color(K.Colors.fieledColor))
+                    .foregroundColor(Color(K.Colors.fieldColor))
                     .padding(.bottom, -35)
                     .padding(.top, 5)
                     .overlay{
@@ -119,7 +118,7 @@ struct ChatBoxView: View {
                                     .padding(.leading, 50)
                                     .frame(maxWidth: .infinity, alignment: .trailing)
                                     .listRowSeparator(.hidden)
-                                    .listRowBackground(Color(K.Colors.fieledColor))
+                                    .listRowBackground(Color(K.Colors.fieldColor))
                                 }else{
                                     VStack(alignment: .leading){
                                         Text(chat.content)
@@ -140,7 +139,7 @@ struct ChatBoxView: View {
                                     .padding(.trailing, 50)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .listRowSeparator(.hidden)
-                                    .listRowBackground(Color(K.Colors.fieledColor))
+                                    .listRowBackground(Color(K.Colors.fieldColor))
                                 }
                             }
                             .listStyle(.plain)

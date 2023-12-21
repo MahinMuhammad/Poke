@@ -88,7 +88,7 @@ struct ProfileView: View {
                 Divider()
                 RoundedRectangle(cornerRadius: 25)
                     .frame(height: 50)
-                    .foregroundColor(Color(K.Colors.fieledColor))
+                    .foregroundColor(Color(K.Colors.fieldColor))
                     .overlay{
                         HStack{
                             Image(systemName: "envelope.fill")

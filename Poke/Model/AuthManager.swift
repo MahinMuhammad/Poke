@@ -46,7 +46,7 @@ final class AuthManager: ObservableObject{
                 print("User registration successfull!")
                 completion(nil)
                 if let uid = Auth.auth().currentUser?.uid{
-                    UserDataManager.shared.storeUserData(name: name, profilePictureUrl: profilePictureUrl, uid: uid){error in
+                    UserDataManager.shared.storeUserData(name: name, email: email, profilePictureUrl: profilePictureUrl, uid: uid, contactList: []){error in
                         if let error{
                             completion(error)
                         }else{

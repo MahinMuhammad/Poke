@@ -51,7 +51,7 @@ struct ChatListView: View {
             .padding(.top, 40)
             
             RoundedRectangle(cornerRadius: 18)
-                .foregroundColor(Color(K.Colors.fieledColor))
+                .foregroundColor(Color(K.Colors.fieldColor))
                 .frame(height: 40)
                 .padding(.all)
                 .overlay {
@@ -138,5 +138,6 @@ struct ChatListView: View {
 struct ChatListView_Previews: PreviewProvider {
     static var previews: some View {
         ChatListView()
+            .environmentObject(Router())
     }
 }

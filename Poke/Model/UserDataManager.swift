@@ -47,21 +47,27 @@ final class UserDataManager{
                 guard let document, let data = document.data()
                 else {fatalError("No data or document found for current user while readind User data")}
                 
-                guard let email = currentUser.email
-                else{fatalError("failed to recieve email of current user while reading User data")}
-                let uid = currentUser.uid
-                let name = data[K.FStore.nameField] as? String ?? "Unknown"
-                let profilePicture = data[K.FStore.prfilePictureUrlField] as? String
-                let user = User(name: name, uid: uid, email: email, profilePicture: profilePicture)
-                completion(user)
+                if let email = data[K.FStore.emailField] as? String{
+                    let uid = document.documentID
+                    let name = data[K.FStore.nameField] as? String ?? "Unknown"
+                    let profilePicture = data[K.FStore.prfilePictureUrlField] as? String
+                    let contactList = data[K.FStore.contactListField] as? [String] ?? []
+                    let user = User(name: name, uid: uid, email: email, profilePicture: profilePicture, contactList: contactList)
+                    completion(user)
+                }else{
+                    print("failed to recieve email of user while reading User data")
+                    completion(nil)
+                }
             }
         }
     }
     
-    func storeUserData(name:String, profilePictureUrl:String?, uid:String, completion: @escaping(Error?)->Void){
+    func storeUserData(name:String, email:String, profilePictureUrl:String?, uid:String, contactList:[String], completion: @escaping(Error?)->Void){
         db.collection(K.FStore.userCollectionName).document(uid).setData([
             K.FStore.nameField : name,
-            K.FStore.prfilePictureUrlField : profilePictureUrl as Any
+            K.FStore.emailField : email,
+            K.FStore.prfilePictureUrlField : profilePictureUrl as Any,
+            K.FStore.contactListField : contactList
         ]){ error in
             if let error{
                 print("Error adding user details: \(error)")
@@ -76,6 +82,7 @@ final class UserDataManager{
     func updateUserData(of user:User, completion: @escaping(Error?)->Void){
         db.collection(K.FStore.userCollectionName).document(user.uid).setData([
             K.FStore.nameField : user.name,
+            K.FStore.emailField : user.email,
             K.FStore.prfilePictureUrlField : user.profilePicture as Any
         ], merge: true){ error in
             if let error{
@@ -86,6 +93,10 @@ final class UserDataManager{
                 completion(nil)
             }
         }
+    }
+    
+    func updateContactList(of uid:String, contactList updatedList:[String]){
+        
     }
     
     func deleteUserData(of uid:String){

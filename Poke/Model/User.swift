@@ -24,11 +24,12 @@
 import Foundation
 
 struct User{
-    var name:String
+    let name:String
     let uid:String
     let email:String
-    var profilePicture:String?
+    let profilePicture:String?
     var profilePictureUrl: URL?{
         return URL(string: profilePicture ?? "")
     }
+    let contactList:[String]
 }

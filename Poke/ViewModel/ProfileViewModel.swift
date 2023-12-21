@@ -73,7 +73,7 @@ final class ProfileViewModel:ObservableObject{
             if let error{
                 print("Failed to upload profile picture with error: \(error)")
             }else if let profilePictureAddress{
-                let updatedUser = User(name: user.name, uid: user.uid, email: user.email, profilePicture: profilePictureAddress)
+                let updatedUser = User(name: user.name, uid: user.uid, email: user.email, profilePicture: profilePictureAddress, contactList: user.contactList)
                 UserDataManager.shared.updateUserData(of: updatedUser) { error in
                     if error == nil{
                         print("Profile picture updated!")

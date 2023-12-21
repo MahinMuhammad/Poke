@@ -26,7 +26,7 @@ import Foundation
 struct K{
     struct Colors{
         static let canvasColor = "CanvasdColor"
-        static let fieledColor = "FieledColor"
+        static let fieldColor = "FieldColor"
         static let fieldColorDark = "FieldColorDark"
         static let secondaryColor = "SecondaryColor"
         static let primaryColor = "PrimaryColor"
@@ -36,8 +36,9 @@ struct K{
     struct FStore{
         static let userCollectionName = "users"
         static let nameField = "name"
-        static let uidField = "uid"
+        static let emailField = "email"
         static let prfilePictureUrlField = "prfilePictureUrl"
+        static let contactListField = "contactList"
         
         //for cloud storage
         static func getProfilePictureCloudPath(of uid:String)->String{

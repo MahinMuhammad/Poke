@@ -24,8 +24,89 @@
 import SwiftUI
 
 struct ContactListView: View {
+    @StateObject var viewModel = ContactListViewModel()
     var body: some View {
-        Text("Contact List")
+        NavigationStack {
+            ZStack{
+                Color(K.Colors.canvasColor)
+                    .ignoresSafeArea()
+                
+                VStack{
+                    HStack {
+                        Text("Contacts")
+                            .fontWeight(.bold)
+                            .font(.system(size: 32))
+                        
+                        Spacer()
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                                .foregroundColor(Color.gray)
+                                .imageScale(.large)
+                        }
+                        
+                    }
+                    .padding(.leading,20)
+                    .padding(.trailing,20)
+                    .padding(.top, 40)
+                    
+                    RoundedRectangle(cornerRadius: 18)
+                        .foregroundColor(Color(K.Colors.fieldColor))
+                        .frame(height: 40)
+                        .padding(.all)
+                        .overlay {
+                            HStack{
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.gray)
+                                
+                                TextField("Search with name or email", text: $viewModel.searchBarInput)
+                                    .tint(Color(UIColor.label))
+                                    .padding(.all)
+                            }
+                            .padding(.leading, 40)
+                        }
+                    
+                    List(0..<10) {_ in
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(height: 80)
+                            .foregroundColor(Color(K.Colors.fieldColorDark))
+                            .listRowBackground(Color(K.Colors.canvasColor))
+                            .listRowSeparator(.hidden)
+                            .overlay{
+                                HStack{
+                                    AsyncImage(url: Dummy.propic){  image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 50, height: 60)
+                                            .clipped()
+                                            .clipShape(Circle())
+                                    }placeholder: {
+                                        Image(systemName: "person.circle.fill")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 50, height: 60)
+                                            .clipped()
+                                            .clipShape(Circle())
+                                    }
+                                    
+                                    VStack(alignment: .leading){
+                                        Text(Dummy.name)
+                                            .font(.title2)
+                                        Text(Dummy.email)
+                                            .foregroundStyle(.gray)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading)
+                            }
+                    }
+                    .listStyle(.plain)
+                }
+            }
+        }
     }
 }
 
