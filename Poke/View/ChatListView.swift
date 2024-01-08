@@ -29,109 +29,109 @@ struct ChatListView: View {
     @State var searchBarInput = ""
     var body: some View {
         NavigationStack(path: $router.path){
-        VStack {
-            HStack {
-                Text("Messages")
-                    .fontWeight(.bold)
-                    .font(.system(size: 32))
-                
-                Spacer()
-                
-                Button {
+            VStack {
+                HStack {
+                    Text("Messages")
+                        .fontWeight(.bold)
+                        .font(.system(size: 32))
                     
-                } label: {
-                    Image(systemName: "square.and.pencil")
-                        .foregroundColor(Color.gray)
-                        .imageScale(.large)
-                }
-                
-            }
-            .padding(.leading,20)
-            .padding(.trailing,20)
-            .padding(.top, 40)
-            
-            RoundedRectangle(cornerRadius: 18)
-                .foregroundColor(Color(K.Colors.fieldColor))
-                .frame(height: 40)
-                .padding(.all)
-                .overlay {
-                    HStack{
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
+                    Spacer()
+                    
+                    Button {
                         
-                        TextField("Search for messages or users", text: $searchBarInput)
-                            .tint(Color(UIColor.label))
-                            .padding(.all)
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            .foregroundColor(Color.gray)
+                            .imageScale(.large)
                     }
-                    .padding(.leading, 40)
+                    
                 }
-            
-            List(viewModel.chatCollection){ chat in
-                NavigationLink(value: chat) {
-                    HStack(alignment: .top){
-                        AsyncImage(url: Dummy.propic){  image in
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 60, height: 60)
-                                .clipped()
-                                .clipShape(Circle())
-                        }placeholder: {
-                            Image(systemName: "person.circle.fill")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 60, height: 60)
-                                .clipped()
-                                .clipShape(Circle())
+                .padding(.leading,20)
+                .padding(.trailing,20)
+                .padding(.top, 40)
+                
+                RoundedRectangle(cornerRadius: 18)
+                    .foregroundColor(Color(K.Colors.fieldColor))
+                    .frame(height: 40)
+                    .padding(.all)
+                    .overlay {
+                        HStack{
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                            
+                            TextField("Search for messages or users", text: $searchBarInput)
+                                .tint(Color(UIColor.label))
+                                .padding(.all)
                         }
-                        
-                        Spacer()
-                            .frame(width: 20)
-                        
-                        VStack(alignment: .leading){
-                            Text(Dummy.name)
-                                .fontWeight(.bold)
-                                .font(.system(size: 20))
+                        .padding(.leading, 40)
+                    }
+                
+                List(viewModel.chatCollection){ chat in
+                    NavigationLink(value: chat) {
+                        HStack(alignment: .top){
+                            AsyncImage(url: Dummy.propic){  image in
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 60, height: 60)
+                                    .clipped()
+                                    .clipShape(Circle())
+                            }placeholder: {
+                                Image(systemName: "person.circle.fill")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 60, height: 60)
+                                    .clipped()
+                                    .clipShape(Circle())
+                            }
                             
                             Spacer()
-                                .frame(height: 10)
+                                .frame(width: 20)
                             
-                            Text(chat.content)
-                                .lineLimit(3)
-                                .fontWeight(.regular)
-                                .font(.system(size: 17))
-                        }
-                        
-                        Spacer()
-                        
-                        VStack{
-                            Text(Dummy.time)
-                                .foregroundColor(Color.gray)
-                                .fontWeight(.thin)
+                            VStack(alignment: .leading){
+                                Text(Dummy.name)
+                                    .fontWeight(.bold)
+                                    .font(.system(size: 20))
+                                
+                                Spacer()
+                                    .frame(height: 10)
+                                
+                                Text(chat.content)
+                                    .lineLimit(3)
+                                    .fontWeight(.regular)
+                                    .font(.system(size: 17))
+                            }
                             
-                            RoundedRectangle(cornerRadius: 6)
-                                .foregroundColor(Color(K.Colors.primaryColor))
-                                .frame(width: 20, height: 20)
-                                .overlay{
-                                    Text(Dummy.numOfMessages)
-                                        .foregroundColor(Color.white)
-                                        .fontWeight(.bold)
-                                }
+                            Spacer()
+                            
+                            VStack{
+                                Text(Dummy.time)
+                                    .foregroundColor(Color.gray)
+                                    .fontWeight(.thin)
+                                
+                                RoundedRectangle(cornerRadius: 6)
+                                    .foregroundColor(Color(K.Colors.primaryColor))
+                                    .frame(width: 20, height: 20)
+                                    .overlay{
+                                        Text(Dummy.numOfMessages)
+                                            .foregroundColor(Color.white)
+                                            .fontWeight(.bold)
+                                    }
+                            }
+                            .padding(.trailing,10)
                         }
-                        .padding(.trailing,10)
                     }
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color(K.Colors.canvasColor))
+                    .padding(.bottom, 25)
+                    .padding(.trailing,-27)
                 }
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color(K.Colors.canvasColor))
-                .padding(.bottom, 25)
-                .padding(.trailing,-27)
-            }
-            .listStyle(.plain)
-            .navigationDestination(for: Chat.self) { chat in
-                ChatBoxView(sending: chat.senderEmail, receiving: chat.receiverEmail)
+                .listStyle(.plain)
+                .navigationDestination(for: Chat.self) { chat in
+                    ChatBoxView(sending: chat.senderEmail, receiving: chat.receiverEmail)
+                }
             }
         }
-    }
     }
 }
 

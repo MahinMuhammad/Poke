@@ -200,6 +200,7 @@ struct ChatBoxView: View {
                         }
                     }
             }
+            
         }
         .navigationBarBackButtonHidden()
     }

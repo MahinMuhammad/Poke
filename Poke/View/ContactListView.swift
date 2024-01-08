@@ -25,8 +25,9 @@ import SwiftUI
 
 struct ContactListView: View {
     @StateObject var viewModel = ContactListViewModel()
+    @EnvironmentObject var router: Router
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.path) {
             ZStack{
                 Color(K.Colors.canvasColor)
                     .ignoresSafeArea()
@@ -61,49 +62,48 @@ struct ContactListView: View {
                                 Image(systemName: "magnifyingglass")
                                     .foregroundColor(.gray)
                                 
-                                TextField("Search with name or email", text: $viewModel.searchBarInput)
+                                TextField("Search Contact", text: $viewModel.searchBarInput)
                                     .tint(Color(UIColor.label))
                                     .padding(.all)
                             }
                             .padding(.leading, 40)
                         }
                     
-                    List(0..<10) {_ in
-                        RoundedRectangle(cornerRadius: 20)
-                            .frame(height: 80)
-                            .foregroundColor(Color(K.Colors.fieldColorDark))
-                            .listRowBackground(Color(K.Colors.canvasColor))
-                            .listRowSeparator(.hidden)
-                            .overlay{
-                                HStack{
-                                    AsyncImage(url: Dummy.propic){  image in
-                                        image
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 50, height: 60)
-                                            .clipped()
-                                            .clipShape(Circle())
-                                    }placeholder: {
-                                        Image(systemName: "person.circle.fill")
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 50, height: 60)
-                                            .clipped()
-                                            .clipShape(Circle())
-                                    }
-                                    
-                                    VStack(alignment: .leading){
-                                        Text(Dummy.name)
-                                            .font(.title2)
-                                        Text(Dummy.email)
-                                            .foregroundStyle(.gray)
-                                    }
+                    List(Dummy.chats){ chat in
+                        NavigationLink(value: chat) {
+                            HStack{
+                                AsyncImage(url: Dummy.propic){  image in
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 60, height: 60)
+                                        .clipped()
+                                        .clipShape(Circle())
+                                }placeholder: {
+                                    Image(systemName: "person.circle.fill")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 60, height: 60)
+                                        .clipped()
+                                        .clipShape(Circle())
                                 }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading)
+                                
+                                VStack(alignment: .leading){
+                                    Text(Dummy.name)
+                                        .font(.title2)
+                                    Text(Dummy.email)
+                                        .foregroundStyle(.gray)
+                                }
                             }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
+                        .listRowBackground(Color(K.Colors.canvasColor))
                     }
                     .listStyle(.plain)
+                    .navigationDestination(for: Chat.self) { chat in
+                        ChatBoxView(sending: chat.senderEmail, receiving: chat.receiverEmail)
+                    }
                 }
             }
         }
@@ -113,5 +113,6 @@ struct ContactListView: View {
 struct ContactListView_Previews: PreviewProvider {
     static var previews: some View {
         ContactListView()
+            .environmentObject(Router())
     }
 }

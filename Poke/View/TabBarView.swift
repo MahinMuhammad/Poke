@@ -90,9 +90,13 @@ struct TabBarView: View {
             SignInView()
         }
         .onAppear{
-            viewModel.selectedTab = .chatList
             if authManager.isSignedIn{
                 profileViewModel.loadUser()
+            }
+        }
+        .onChange(of: authManager.isSignedIn) { isSignedIn in
+            if isSignedIn{
+                viewModel.selectedTab = .chatList
             }
         }
     }
