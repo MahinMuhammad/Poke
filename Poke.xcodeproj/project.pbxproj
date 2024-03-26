@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0059BBA12AA87CA700B52D55 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059BBA02AA87CA700B52D55 /* ProfileView.swift */; };
+		0061E6BA2B4E964A00C7E9A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061E6B92B4E964A00C7E9A0 /* Extensions.swift */; };
 		0066D63C2A8526DF00685C71 /* PokeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D63B2A8526DF00685C71 /* PokeApp.swift */; };
 		0066D63E2A8526DF00685C71 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066D63D2A8526DF00685C71 /* SignInView.swift */; };
 		0066D6402A8526E100685C71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0066D63F2A8526E100685C71 /* Assets.xcassets */; };
@@ -41,7 +42,6 @@
 		00C888902B222DA400AF6941 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 00C8888F2B222DA400AF6941 /* FirebaseStorage */; };
 		00CE95242A8936F400C253D8 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE95232A8936F400C253D8 /* ChatListViewModel.swift */; };
 		00E2B2692AA8568C0043FF9F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2B2682AA8568C0043FF9F /* SettingsViewModel.swift */; };
-		00E50AAC2AA8AC270044BEEC /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E50AAB2AA8AC270044BEEC /* DeviceRotationViewModifier.swift */; };
 		00EBC3CB2B33336800C228C9 /* PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBC3CA2B33336800C228C9 /* PictureView.swift */; };
 		00EBC3CD2B33338E00C228C9 /* PictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBC3CC2B33338E00C228C9 /* PictureViewModel.swift */; };
 		00EBC3CF2B348A5200C228C9 /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBC3CE2B348A5200C228C9 /* ContactListViewModel.swift */; };
@@ -49,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		0059BBA02AA87CA700B52D55 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0061E6B92B4E964A00C7E9A0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0066D6382A8526DF00685C71 /* Poke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Poke.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0066D63B2A8526DF00685C71 /* PokeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeApp.swift; sourceTree = "<group>"; };
 		0066D63D2A8526DF00685C71 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 		009F37A92AA78008009FAFF6 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		00CE95232A8936F400C253D8 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 		00E2B2682AA8568C0043FF9F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		00E50AAB2AA8AC270044BEEC /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
 		00EBC3CA2B33336800C228C9 /* PictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureView.swift; sourceTree = "<group>"; };
 		00EBC3CC2B33338E00C228C9 /* PictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewModel.swift; sourceTree = "<group>"; };
 		00EBC3CE2B348A5200C228C9 /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +131,7 @@
 				0066D6612A866B2C00685C71 /* Route */,
 				0066D63F2A8526E100685C71 /* Assets.xcassets */,
 				0066D6412A8526E100685C71 /* Preview Content */,
+				0061E6B92B4E964A00C7E9A0 /* Extensions.swift */,
 			);
 			path = Poke;
 			sourceTree = "<group>";
@@ -201,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				0066D67F2A868E9200685C71 /* FormElements.swift */,
-				00E50AAB2AA8AC270044BEEC /* DeviceRotationViewModifier.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 				0066D6752A8686AC00685C71 /* ChatListView.swift in Sources */,
 				0066D6822A86990B00685C71 /* UserDataManager.swift in Sources */,
 				0066D6882A869DE500685C71 /* Chat.swift in Sources */,
-				00E50AAC2AA8AC270044BEEC /* DeviceRotationViewModifier.swift in Sources */,
+				0061E6BA2B4E964A00C7E9A0 /* Extensions.swift in Sources */,
 				0066D67D2A8688DC00685C71 /* ContactListView.swift in Sources */,
 				0099AA9B2A8A8CC700803446 /* ChatBoxViewModel.swift in Sources */,
 				0066D65E2A86662D00685C71 /* Destination.swift in Sources */,
